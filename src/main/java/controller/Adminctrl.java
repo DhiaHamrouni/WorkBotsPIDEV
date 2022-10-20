@@ -207,6 +207,7 @@ public class Adminctrl implements Initializable{
         a.setNumTel(adminnumtel.getText());
         a.setDateNaissance(String.valueOf(adminddn.getValue()));
         result.setText(ajouterAgent(a));
+        showagents();
     }
     public void clearfields(){
         adminnom.setText("");
@@ -544,6 +545,9 @@ public class Adminctrl implements Initializable{
         stage.setScene(scene);
         stage.show();
 
+    }
+    public void refreshpls(){
+        showagents();
     }
 }
 

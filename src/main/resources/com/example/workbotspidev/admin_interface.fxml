@@ -116,6 +116,12 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
+                        <Button layoutX="632.0" layoutY="169.0" mnemonicParsing="false" onAction="#refreshpls" prefHeight="38.0" prefWidth="189.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="ACTUALISER" />
+                        <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="651.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/1082454.png" />
+                           </image>
+                        </ImageView>
                             </children>
                         </AnchorPane>
                     </items>

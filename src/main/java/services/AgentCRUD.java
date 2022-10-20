@@ -62,6 +62,10 @@ public class AgentCRUD  {
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             pst.setString(1, chdel);
             pst.executeUpdate();
+            String req3= "DELETE FROM `users` WHERE ID = ?";
+            PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
+            pst1.setString(1, chdel);
+            pst1.executeUpdate();
             return ("L'agent est supprime avec succee!");
         } catch (SQLException ex) {
            return (ex.getMessage());
