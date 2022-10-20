@@ -27,7 +27,7 @@ public class test {
         //MyConnexion mc2 = MyConnexion.getInstance();
         ContratCRUD ccd = new ContratCRUD();
         //ccd.ajouterContrat();
-       //Contrat c2 = new Contrat(4,"depot large" ,"Mehdi","Hela","78542136","14258523","dhia");
+       Contrat c2 = new Contrat(4,"depot large" ,"Mehdi","Hela","78542136","14258523","dhia",);
        //ccd.ajouterContrat2(c2);
       Contrat c3 = new Contrat("144","fedi","174","hamedkozdoghli","villa","5000dt","amal","2001-12-30");
        //ccd.ajouterContrat2(c3);
@@ -39,6 +39,7 @@ public class test {
          //ccd.ajouterContrat();
          Contrat cc= new Contrat(4,"hiouiiidoiffjk,","hjkj","hkk","khkh","hkkk","pmppp0","dddddd","2012-01-03");
          ccd.ajouterContrat2(c3);
+
          
          
 
