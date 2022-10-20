@@ -25,10 +25,11 @@ public class ClientCRUD {
             String req3= "INSERT INTO `users` (`Email`, `Password`, `Role`, `Status`) "+
                     "VALUES (?, ?, ?, ?)";
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
-            pst.setString(1,cl.getEmail());
-            pst.setString(2,cl.getMot_de_passe());
-            pst.setString(3,"client");
-            pst.setString(4,"Unbanned");
+            pst1.setString(1,cl.getEmail());
+            pst1.setString(2,cl.getMot_de_passe());
+            pst1.setString(3,"client");
+            pst1.setString(4,"Unbanned");
+            pst1.executeUpdate();
             return ("Votre Client est ajouté avec succée");
         } catch (SQLException ex) {
             return (ex.getMessage());

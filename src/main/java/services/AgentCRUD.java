@@ -69,8 +69,6 @@ public class AgentCRUD  {
     }
     public static ObservableList<Agent> AfficherAgent(){
         ObservableList<Agent> agentlist= (FXCollections.observableArrayList()) ;
-        Agent a = new Agent();
-
         try {
             String req3 = "SELECT `id`, `Nom`, `Prenom`, `email`, `num_tel`, `date_naissance` FROM `agents`";
             Statement st;
@@ -79,6 +77,7 @@ public class AgentCRUD  {
             ResultSet result = st.executeQuery(req3);
             while(result.next())
             {
+                Agent a = new Agent();
                 a.setId(Integer.parseInt(result.getString(1)));
                 a.setNom(result.getString(2));
                 a.setPrenom(result.getString(3));

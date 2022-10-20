@@ -154,33 +154,6 @@ public class Adminctrl implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         try {
             showagents();
-            AgentCRUD a=new AgentCRUD();
-            FilteredList<Agent> filteredData = new FilteredList<>((a.AfficherAgent()), b -> true);
-            SearchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredData.setPredicate(agent1 -> {
-                    if (newValue.isEmpty() || newValue == null) {
-                        return true;
-                    }
-                    String searchKeyword = newValue.toLowerCase();
-                    if (String.valueOf(agent1.getId()).toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (agent1.getNom().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (agent1.getPrenom().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    }   else if (agent1.getEmail().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (agent1.getNumTel().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (agent1.getDateNaissance().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else
-                        return false;
-                });
-            });
-            SortedList<Agent> sortedList = new SortedList<>(filteredData);
-            sortedList.comparatorProperty().bind(tvbox.comparatorProperty());
-            tvbox.setItems(sortedList);
         }
         catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -189,6 +162,7 @@ public class Adminctrl implements Initializable{
     }
     public void showagents()
     {
+
         colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colnom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
         colprenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
@@ -196,6 +170,32 @@ public class Adminctrl implements Initializable{
         colnumtel.setCellValueFactory(new PropertyValueFactory<>("NumTel"));
         colddn.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
         tvbox.setItems(a.AfficherAgent());
+        FilteredList<Agent> filteredData = new FilteredList<>((a.AfficherAgent()), b -> true);
+        SearchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(agent1 -> {
+                if (newValue.isEmpty() || newValue == null) {
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if (String.valueOf(agent1.getId()).toLowerCase().contains(searchKeyword)) {
+                    return true;
+                } else if (agent1.getNom().toLowerCase().contains(searchKeyword)) {
+                    return true;
+                } else if (agent1.getPrenom().toLowerCase().contains(searchKeyword)) {
+                    return true;
+                }   else if (agent1.getEmail().toLowerCase().contains(searchKeyword)) {
+                    return true;
+                } else if (agent1.getNumTel().toLowerCase().contains(searchKeyword)) {
+                    return true;
+                } else if (agent1.getDateNaissance().toLowerCase().contains(searchKeyword)) {
+                    return true;
+                } else
+                    return false;
+            });
+        });
+        SortedList<Agent> sortedList = new SortedList<>(filteredData);
+        sortedList.comparatorProperty().bind(tvbox.comparatorProperty());
+        tvbox.setItems(sortedList);
     }
 
     public void addemployee() throws SQLException {
