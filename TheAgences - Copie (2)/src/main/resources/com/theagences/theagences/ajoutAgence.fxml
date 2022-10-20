@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="470.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.theagences.theagences.Controller.ajoutAgenceController">
+   <children>
+      <Button fx:id="ajout_agence" layoutX="574.0" layoutY="406.0" mnemonicParsing="false" onAction="#FxAjoutAgence" text="Button" />
+      <TextField fx:id="region_adresse" layoutX="92.0" layoutY="288.0" />
+      <TextField fx:id="email_agence" layoutX="92.0" layoutY="324.0" />
+      <TextField fx:id="site_agence" layoutX="92.0" layoutY="362.0" />
+      <TextField fx:id="avenue_adresse" layoutX="384.0" layoutY="288.0" />
+      <TextField fx:id="rue_adresse" layoutX="384.0" layoutY="324.0" />
+      <TextField fx:id="postal_adresse" layoutX="384.0" layoutY="362.0" />
+      <Label layoutX="25.0" layoutY="292.0" text="region" />
+      <Label layoutX="28.0" layoutY="328.0" text="email" />
+      <Label layoutX="28.0" layoutY="366.0" text="site" />
+      <Label layoutX="332.0" layoutY="292.0" text="avenue" />
+      <Label layoutX="332.0" layoutY="328.0" text="rue" />
+      <Label layoutX="332.0" layoutY="366.0" text="postal" />
+      <Label layoutX="28.0" layoutY="410.0" text="num" />
+      <TextField fx:id="num_agence" layoutX="92.0" layoutY="406.0" />
+      <ListView fx:id="listAgence" editable="true" layoutX="211.0" layoutY="35.0" prefHeight="200.0" prefWidth="276.0" />
+      <Button fx:id="Afficher" layoutX="511.0" layoutY="135.0" mnemonicParsing="false" onAction="#afficherlist" text="Afficher" />
+      <Button fx:id="rechercherID" layoutX="74.0" layoutY="135.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="25.0" prefWidth="76.0" text="Rechercher" />
+      <TextField fx:id="rechercherAgence" layoutX="38.0" layoutY="96.0" />
+      <Button fx:id="SupprimerID" layoutX="74.0" layoutY="170.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="25.0" prefWidth="76.0" text="Supprimer" />
+   </children>
+</AnchorPane>
