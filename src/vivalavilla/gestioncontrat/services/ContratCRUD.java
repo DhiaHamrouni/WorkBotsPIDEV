@@ -23,6 +23,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import vivalavilla.gestioncontrat.entities.Contrat;
 import vivalavilla.gestioncontrat.utils.MyConnexion;
 
@@ -36,10 +39,10 @@ public class ContratCRUD {
         cnx2 = MyConnexion.getInstance().getCnx();
     }
     public void ajouterContrat(){
-        String req="INSERT INTO `contrat` (`id_bien_contrat`, "
-                + "`nom_bien_contrat`, `nom_client_contrat`, `nom_vendeur_contrat`,"
-                + " `cin_vendeur_contrat`, `cin_client_contrat`, `agent_contrat`) "
-                + "VALUES ('15', 'maison s+2', 'fedi labidi', 'will smith', '14451233', '14451236', 'mohamed ben amor')";
+        String req="INSERT INTO `contrat` ("
+                + "`cin_client`, `nom_client`, `cin_vendeur`,"
+                + " `nom_vendeur`, `nom_bien`, `prix_bien`, `nom_agent`, `date`) "
+                + "VALUES ('14451233','fediiii','15236315','hamads','sdfdsf',5.23,'mounir',DATE '2013-11-26')";
         try {
             Statement st = cnx2.createStatement();
             st.executeUpdate(req);
@@ -52,26 +55,31 @@ public class ContratCRUD {
     public void ajouterContrat2(Contrat c){
         
         try {
-            String req2= "INSERT INTO `contrat` (`id_bien_contrat`, "
-                + "`nom_bien_contrat`, `nom_client_contrat`, `nom_vendeur_contrat`,"
-                + " `cin_vendeur_contrat`, `cin_client_contrat`, `agent_contrat`) "
-                + "VALUES (?,?,?,?,?,?,?)";
+            String req2="INSERT INTO `contrat` ("
+                + "`cin_client`, `nom_client`, `cin_vendeur`,"
+                + " `nom_vendeur`, `nom_bien`, `prix_bien`, `nom_agent`,`date`) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx2.prepareStatement(req2);
-            pst.setInt(1, c.getId_bien_contrat());
-            pst.setString(2, c.getNom_bien_contrat());
-            pst.setString(3, c.getNom_client_contrat());
-            pst.setString(4,c.getNom_vendeur_contrat());
-            pst.setString(5, c.getCin_vendeur_contrat());
-            pst.setString(6,c.getCin_client_contrat());
-            pst.setString(7,c.getAgent_contrat());
+            //pst.setInt(1, c.getId_bien_contrat());
+            pst.setString(1, c.getCin_client_contrat());
+            pst.setString(2, c.getNom_client_contrat());
+            pst.setString(3, c.getCin_vendeur_contrat());
+            pst.setString(4, c.getNom_vendeur_contrat());
+            pst.setString(5, c.getNom_bien_contrat());
+            pst.setString(6, c.getPrix_bien_contrat());
+            pst.setString(7, c.getAgent_contrat());
+            pst.setString(8, c.getDate());
+            
             pst.executeUpdate();
             System.out.println("Votre contrat est ajouté!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
-    public List<Contrat> afficherContrats(){
+    public ObservableList<Contrat> afficherContrats(){
         List<Contrat> myList = new ArrayList<>();
+        ObservableList<Contrat> oblist = FXCollections.observableArrayList();
+
         try {
             
             String req3 = "Select * from contrat";
@@ -82,12 +90,16 @@ public class ContratCRUD {
             {
                 Contrat c = new Contrat();
                 c.setId_bien_contrat(rs.getInt(1));
-                c.setNom_bien_contrat(rs.getString(2));
+                c.setCin_client_contrat(rs.getString(2));
                 c.setNom_client_contrat(rs.getString(3));
-                c.setNom_vendeur_contrat(rs.getString(4));
-                c.setCin_vendeur_contrat(rs.getString(5));
-                c.setCin_client_contrat(rs.getString(6));
-                c.setAgent_contrat(rs.getString(7));
+                c.setCin_vendeur_contrat(rs.getString(4));
+                c.setNom_vendeur_contrat(rs.getString(5));
+                c.setNom_bien_contrat(rs.getString(6));
+                c.setPrix_bien_contrat(rs.getString(7));
+                c.setAgent_contrat(rs.getString(8));
+                c.setDate(rs.getString(9));
+                oblist.add(c);
+                               
                 myList.add(c); 
                 
             }
@@ -96,12 +108,12 @@ public class ContratCRUD {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return myList;
+        return oblist;
     }
     public void SupprimerContrat(int id){
         
         try {
-            String req3= "DELETE FROM `contrat` WHERE id_bien_contrat= ?";
+            String req3= "DELETE FROM `contrat` WHERE id= ?";
             PreparedStatement pst = cnx2.prepareStatement(req3);
             pst.setInt(1, id);
             pst.executeUpdate();
@@ -113,59 +125,69 @@ public class ContratCRUD {
     public void ModifierContrat(Contrat c){
         
         try {
-            String req4= "UPDATE `contrat` SET `id_bien_contrat`=?,`nom_bien_contrat`=?,`nom_client_contrat`=?,`nom_vendeur_contrat`=?,`cin_vendeur_contrat`=?,`cin_client_contrat`=?,`agent_contrat`=? WHERE id_bien_contrat = ?";
+            String req4= "UPDATE `contrat` SET `cin_client`=?,`nom_client`=?,`cin_vendeur`=?,`nom_vendeur`=?,`nom_bien`=?,`prix_bien`=?,`nom_agent`=?,`date`=? WHERE id = ?";
             PreparedStatement pst = cnx2.prepareStatement(req4);
-            pst.setInt(1, c.getId_bien_contrat());
-            pst.setString(2, c.getNom_bien_contrat());
-            pst.setString(3, c.getNom_client_contrat());
-            pst.setString(4,c.getNom_vendeur_contrat());
-            pst.setString(5, c.getCin_vendeur_contrat());
-            pst.setString(6,c.getCin_client_contrat());
-            pst.setString(7,c.getAgent_contrat());            
-            pst.setInt(8, c.getId_bien_contrat());
+            //pst.setInt(1, c.getId_bien_contrat());
+            pst.setString(1, c.getCin_client_contrat());
+            pst.setString(2, c.getNom_client_contrat());
+            pst.setString(3, c.getCin_vendeur_contrat());
+            //pst.setString(4, c.getCin_vendeur_contrat());
+            pst.setString(4, c.getNom_vendeur_contrat());
+            pst.setString(5, c.getNom_bien_contrat());
+            pst.setString(6, c.getPrix_bien_contrat());
+            pst.setString(7, c.getAgent_contrat());
+            pst.setString(8, c.getDate());
+            pst.setInt(9, c.getId_bien_contrat());
             pst.executeUpdate();
             System.out.println("Votre contrat est modifie !!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
-    public void RechercherContrat(Contrat c){
+    public Contrat RechercherContrat(Contrat c){
         List<Contrat> myList = new ArrayList<>();
+        Contrat c2 = new Contrat();
+        c2.setId_bien_contrat(-1);
         try {
             
             String req3 = "Select * from contrat";
             Statement st;
             st = cnx2.createStatement();
             ResultSet rs = st.executeQuery(req3);
-            Contrat c2 = new Contrat();
-            c2.setId_bien_contrat(-1);
+
             while(rs.next())
             {
                 
                 if (rs.getInt(1) == c.getId_bien_contrat())
                 {c2.setId_bien_contrat(rs.getInt(1));
-                c2.setNom_bien_contrat(rs.getString(2));
+                c2.setNom_bien_contrat(rs.getString(6));
                 c2.setNom_client_contrat(rs.getString(3));
-                c2.setNom_vendeur_contrat(rs.getString(4));
-                c2.setCin_vendeur_contrat(rs.getString(5));
-                c2.setCin_client_contrat(rs.getString(6));
-                c2.setAgent_contrat(rs.getString(7));
+                c2.setNom_vendeur_contrat(rs.getString(5));
+                c2.setCin_vendeur_contrat(rs.getString(4));
+                c2.setCin_client_contrat(rs.getString(2));
+                c2.setAgent_contrat(rs.getString(8));
+                c2.setPrix_bien_contrat(rs.getString(7));
+                c2.setDate(rs.getString(9));
                     System.out.println("contrat trouve !!");
                     System.out.println(c2);
+
                 
                 }
-                else
+                
+            }
+            if (c2.getId_bien_contrat()==-1)
                 {
                     System.out.println("contrat n existe pas !");
                 }
-            }
-            
 
-            
+
+
+
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        
+      return c2;
     }
     public void rapportpdfContrat(Contrat c){
         try {
