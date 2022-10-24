@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="protobuf-java-3.19.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jar_files/protobuf-java-3.19.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/mysql-connector-java-8.0.30.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.base" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.controls" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.fxml" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.graphics" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.media" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.swing" />
+      <root url="jar://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/src.zip!/javafx.web" />
+    </SOURCES>
+  </library>
+</component>

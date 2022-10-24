@@ -21,8 +21,8 @@ public class ProjetFinal {
            Prestataire p = new Prestataire(2, "TGH", "Traveau Generale Hydrolique", "20411849", "mladlald@esprit.tn");
            //ps.ajouterPrestataire(p);
            //ps.afficherPrestataires();
-           ps.RechercherPrestataire2(2);
-
+           //ps.ModifierPrestataire(p);
+            System.out.println(ps.afficherPrestataires());
     }
     
 }

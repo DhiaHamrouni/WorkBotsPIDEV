@@ -139,13 +139,15 @@ public class PrestataireService {
             Prestataire p2 = new Prestataire();
             p2.setId_prestataire(-1);
             while(rs.next())
-            {
-                
+            { 
                 if (rs.getInt(1) == Id_prestataire)
                 {
                     p2.setId_prestataire(rs.getInt(1));
+                    p2.setNom_commercial(rs.getString(2));
+                    p2.setDomaine_service(rs.getString(3));
+                    p2.setNum_tel(rs.getString(4));
+                    p2.setEmail(rs.getString(5));
 
-                    
                     System.out.println("prestataire existe");
                     System.out.println(p2);
                     return true;

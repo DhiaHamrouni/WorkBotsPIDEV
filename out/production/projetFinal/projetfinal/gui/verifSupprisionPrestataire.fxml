@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="254.0" prefWidth="493.0" style="-fx-background-color: #244357;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetfinal.gui.VerifSupprisionPrestataireController">
+   <children>
+      <Label layoutX="17.0" layoutY="44.0" text="VOULEZ-VOUS VRAIMENT SUPPRIMER CE PRESTATAIRE ?" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnOuiSuppPres" layoutX="55.0" layoutY="127.0" mnemonicParsing="false" onAction="#btnOuiSuppPresAction" prefHeight="36.0" prefWidth="130.0" text="OUI" />
+      <Button fx:id="btnNonSuppPres" layoutX="285.0" layoutY="127.0" mnemonicParsing="false" onAction="#btnNonSuppPresAction" prefHeight="36.0" prefWidth="145.0" text="NON" />
+   </children>
+</AnchorPane>

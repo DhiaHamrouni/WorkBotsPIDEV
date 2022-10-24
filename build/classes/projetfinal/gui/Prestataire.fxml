@@ -29,7 +29,7 @@
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="719.0" prefWidth="473.0">
                            <children>
-                              <Label layoutX="54.0" layoutY="14.0" text="AJOUTER UN NOUVEAU PRESTATAIRE :" textFill="WHITE">
+                              <Label fx:id="labelModifier" layoutX="54.0" layoutY="14.0" text="AJOUTER UN NOUVEAU PRESTATAIRE :" textFill="WHITE">
                                  <font>
                                     <Font name="Montserrat Regular" size="19.0" />
                                  </font>
@@ -80,6 +80,11 @@
                                  </font>
                               </Label>
                               <TextArea fx:id="tfResultat" editable="false" layoutX="16.0" layoutY="508.0" prefHeight="150.0" prefWidth="398.0" />
+                              <Button fx:id="btnModifierPrestataire" layoutX="184.0" layoutY="414.0" mnemonicParsing="false" onAction="#ModifierPrestataireAction" prefHeight="42.0" prefWidth="226.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="modifier Prestataire" visible="false">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -95,13 +100,13 @@
                                  </font>
                               </Label>
                               <TextField fx:id="tfIdPrestataire2" layoutX="183.0" layoutY="42.0" prefHeight="35.0" prefWidth="172.0" promptText="&quot;1234567&quot;" />
-                              <TableView fx:id="tablePrestataire" layoutX="76.0" layoutY="239.0" prefHeight="380.0" prefWidth="671.0">
+                              <TableView fx:id="tablePrestataire" layoutX="76.0" layoutY="265.0" prefHeight="380.0" prefWidth="671.0">
                                  <columns>
                                     <TableColumn fx:id="clmID" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="clmNomCommercial" prefWidth="128.7999267578125" text="NOM_COMMERCIAL" />
                                     <TableColumn fx:id="clmDomaineService" prefWidth="161.5999755859375" text="DOMAINE_SERVICE" />
                                     <TableColumn fx:id="clmNumTel" minWidth="1.60003662109375" prefWidth="124.80007934570312" text="NUM TEL" />
-                                    <TableColumn fx:id="clmEmail" minWidth="0.0" prefWidth="136.0" text="EMAIL" />
+                                    <TableColumn fx:id="clmEmail" minWidth="0.0" prefWidth="179.20000000000005" text="EMAIL" />
                                  </columns>
                               </TableView>
                               <Button fx:id="btnUpdatePrestataire" layoutX="412.0" layoutY="91.0" mnemonicParsing="false" onAction="#UpdatePrestataireAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Mettre À Jour Ce Prestataire">
@@ -114,6 +119,12 @@
                                     <Font size="16.0" />
                                  </font>
                               </Button>
+                              <Label layoutX="36.0" layoutY="218.0" text="RECHERCHE" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="prestataireRechercheF" layoutX="120.0" layoutY="215.0" prefHeight="26.0" prefWidth="617.0" promptText="RECHERCHE" />
                            </children>
                         </AnchorPane>
                      </items>
