@@ -85,12 +85,13 @@
                               <Font size="30.0" />
                            </font></TextArea>
                         <PasswordField fx:id="adminmdp" layoutX="243.0" layoutY="218.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
-                        <CheckBox layoutX="419.0" layoutY="222.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="checker" layoutX="419.0" layoutY="222.0" mnemonicParsing="false" onAction="#checkyoself" />
+                        <TextField fx:id="adminmdp1" layoutX="243.0" layoutY="217.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" visible="false" />
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-radius: 20;">
                             <children>
-                                <TableView fx:id="tvbox" layoutX="29.0" layoutY="269.0" prefHeight="382.0" prefWidth="778.0">
+                                <TableView fx:id="tvbox" layoutX="28.0" layoutY="60.0" prefHeight="196.0" prefWidth="778.0">
                                     <columns>
                                         <TableColumn fx:id="colid" prefWidth="75.0" text="ID" />
                                         <TableColumn fx:id="colnom" prefWidth="75.0" text="NOM" />
@@ -100,28 +101,73 @@
                                         <TableColumn fx:id="colddn" prefWidth="216.00006103515625" text="DATE NAISSANCE" />
                                     </columns>
                                 </TableView>
-                                <Button layoutX="335.0" layoutY="49.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="METTRE À JOUR UN EMPLOYEE">
+                        <TextField fx:id="SearchBar" layoutX="46.0" layoutY="14.0" prefHeight="26.0" prefWidth="743.0" promptText="Search Bar" style="-fx-background-radius: 20;" />
+                        <TextField fx:id="tfidad" layoutX="118.0" layoutY="298.0" style="-fx-background-radius: 30;" />
+                        <TextField fx:id="tfprenomad" layoutX="118.0" layoutY="344.0" style="-fx-background-radius: 30;" />
+                        <TextField fx:id="tfnomad" layoutX="118.0" layoutY="390.0" style="-fx-background-radius: 30;" />
+                        <TextField fx:id="tfemailad" layoutX="119.0" layoutY="436.0" style="-fx-background-radius: 30;" />
+                        <TextField fx:id="tfnumtelad" layoutX="120.0" layoutY="483.0" style="-fx-background-radius: 30;" />
+                        <TextField fx:id="tfddnad" layoutX="121.0" layoutY="535.0" style="-fx-background-radius: 30;" />
+                        <Label layoutX="28.0" layoutY="299.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="345.0" text="NOM" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="28.0" layoutY="437.0" text="EMAIL" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="28.0" layoutY="484.0" text="NUM_TEL" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="28.0" layoutY="536.0" text="D_D_N" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                                <Button fx:id="supration" layoutX="360.0" layoutY="321.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="SUPPRIMER UN EMPLOYEE">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="44.0" layoutY="49.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="SUPPRIMER UN EMPLOYEE">
+                                <Button fx:id="modifation" layoutX="360.0" layoutY="396.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="METTRE À JOUR UN EMPLOYEE">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Button>
-                        <TextField fx:id="SearchBar" layoutX="53.0" layoutY="217.0" prefHeight="26.0" prefWidth="743.0" promptText="Search Bar" style="-fx-background-radius: 20;" />
-                        <Button layoutX="44.0" layoutY="150.0" mnemonicParsing="false" onAction="#BanHammer" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="BANIR UN COMPTE">
+                        <Button fx:id="bannation" layoutX="360.0" layoutY="476.0" mnemonicParsing="false" onAction="#BanHammer" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="BANIR UN COMPTE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button layoutX="632.0" layoutY="169.0" mnemonicParsing="false" onAction="#refreshpls" prefHeight="38.0" prefWidth="189.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="ACTUALISER" />
-                        <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="651.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/1082454.png" />
-                           </image>
-                        </ImageView>
+                        <Label layoutX="25.0" layoutY="391.0" text="PRENOM" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="supration1" layoutX="360.0" layoutY="321.0" mnemonicParsing="false" onAction="#delete1" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="CONFIRMER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="supration2" layoutX="360.0" layoutY="396.0" mnemonicParsing="false" onAction="#delete2" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="ANNULER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="supration11" layoutX="360.0" layoutY="321.0" mnemonicParsing="false" onAction="#modif1" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="METTRE A JOUR" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </items>

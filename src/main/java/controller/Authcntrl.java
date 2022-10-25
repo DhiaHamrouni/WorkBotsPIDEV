@@ -2,6 +2,7 @@ package controller;
 import java.io.IOException;
 import java.sql.*;
 import java.util.List;
+import java.util.Objects;
 
 import com.example.workbotspidev.HelloApplication;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class Authcntrl {
     String login;
     String pass;
     Stage stage;
-
+    Parent root;
 
 
 
@@ -54,14 +55,15 @@ public class Authcntrl {
     public void AuthBtn(ActionEvent event) throws IOException, SQLException {
         login=logindh.getText();
         pass=pwddh.getText();
-        try{
-            String req3 = "SELECT * FROM `users` WHERE Email='"+login+"' and Password='"+pass+"'";
-            Statement st ;
+
+        try {
+            String req3 = "SELECT * FROM `users` WHERE Email='" + login + "' and Password='" + pass + "'";
+            Statement st;
             Connection cnx = MyConnexion.getInstance().getCnx();
             st = cnx.createStatement();
             ResultSet result = st.executeQuery(req3);
-            if (result.next()==false){
-                    Stopright.setVisible(true);
+            if (result.next()) {
+                Stopright.setVisible(true);
             }
             switch (result.getString(3)){
                 case ("client"):
@@ -70,7 +72,23 @@ public class Authcntrl {
                         Stopright.setVisible(true);
                     }
                     else {
+                        String username = logindh.getText();
+                        String req = "SELECT 'prenom' FROM `clients` WHERE Email='"+username+"'";
+                        Statement st1;
+                        Connection cnx1 = MyConnexion.getInstance().getCnx();
+                        st1 = cnx1.createStatement();
+                        ResultSet result1 = st.executeQuery(req);
 
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/client_interface.fxml"));
+                        root = loader.load();
+
+                        Clientcntrl scene2Controller = loader.getController();
+                        scene2Controller.getName(result1.getString(1));
+
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
                     }
                 }
                 case ("agent"):

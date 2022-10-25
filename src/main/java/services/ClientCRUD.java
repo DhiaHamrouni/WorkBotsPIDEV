@@ -16,19 +16,21 @@ public class ClientCRUD {
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             pst.setString(1, cl.getCIN());
             pst.setString(2, cl.getNom());
-            pst.setString(3,cl.getEmail());
-            pst.setString(4, cl.getMot_de_passe());
-            pst.setString(5,cl.getNum_tel());
-            pst.setString(6, cl.getSexe());
-            pst.setString(7,String.valueOf(cl.getDate_naissance()));
+            pst.setString(3,cl.getPrenom());
+            pst.setString(4, cl.getEmail());
+            pst.setString(5,cl.getMot_de_passe());
+            pst.setString(6, cl.getNum_tel());
+            pst.setString(7,cl.getSexe());
+            pst.setString(8,String.valueOf(cl.getDate_naissance()));
+            pst.setString(9,cl.getAdresse());
             pst.executeUpdate();
-            String req3= "INSERT INTO `users` (`Email`, `Password`, `Role`, `Status`) "+
-                    "VALUES (?, ?, ?, ?)";
+            String req3= "INSERT INTO `users`(`Email`, `Password`, `Roles`, `status`) VALUES (?, ?, ?, ?)";
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
             pst1.setString(1,cl.getEmail());
             pst1.setString(2,cl.getMot_de_passe());
             pst1.setString(3,"client");
             pst1.setString(4,"Unbanned");
+            pst.executeUpdate();
             pst1.executeUpdate();
             return ("Votre Client est ajouté avec succée");
         } catch (SQLException ex) {

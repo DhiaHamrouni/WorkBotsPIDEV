@@ -41,28 +41,33 @@ public class AgentCRUD  {
             return (ex.getMessage());
         }
     }
-    public static String ModifAgent(Agent a,Integer id){
+    public static String ModifAgent(Agent a,String email){
         try {
-            String req2= "UPDATE `agents` SET NOM=?, PRENOM=?, EMAIL=?, NUM_TEL=? WHERE Id="+id;
+            String req2= "UPDATE `agents` SET NOM=?, PRENOM=?, EMAIL=?, NUM_TEL=? WHERE email='"+email+"'";
+            String req3= "UPDATE `users` SET 'Email'=? WHERE Email='"+email+"'";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
+            PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
+
             pst.setString(1, a.getNom());
             pst.setString(2, a.getPrenom());
             pst.setString(3,a.getEmail());
             pst.setString(4,a.getNumTel());
+            pst1.setString(1,a.getEmail());
             pst.executeUpdate();
+            pst1.executeUpdate();
             return ("Votre agent est modifie avecc succee!");
         } catch (SQLException ex) {
            return (ex.getMessage());
         }
     }
     public static String SupprAgent(Agent a){
-        String chdel=String.valueOf(a.getId());
+        String chdel=String.valueOf(a.getEmail());
         try {
-            String req2= "DELETE FROM `agents` WHERE ID = ?";
+            String req2= "DELETE FROM `agents` WHERE email = ?";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             pst.setString(1, chdel);
             pst.executeUpdate();
-            String req3= "DELETE FROM `users` WHERE ID = ?";
+            String req3= "DELETE FROM `users` WHERE Email = ?";
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
             pst1.setString(1, chdel);
             pst1.executeUpdate();

@@ -26,6 +26,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static services.AgentCRUD.*;
@@ -45,6 +46,10 @@ public class Adminctrl implements Initializable{
     TextField adminnumtel;
     @FXML
     DatePicker adminddn;
+    @FXML
+    TextField adminmdp1;
+    @FXML
+    CheckBox checker;
     @FXML
     private void getDate (ActionEvent event){
 
@@ -113,33 +118,9 @@ public class Adminctrl implements Initializable{
     @FXML
     ImageView cross;
     @FXML
-    TextField afficheid;
-    @FXML
-    TextField affichenom;
-    @FXML
-    TextField afficheprenom;
-    @FXML
-    TextField affichenumtel;
-    @FXML
-    TextField affichemail;
-    @FXML
-    TextField updatenom;
-    @FXML
-    TextField updateprenom;
-    @FXML
-    TextField updatenumtel;
-    @FXML
-    TextField updatemail ;
-    @FXML
-    Button buttonmodifagent;
-    @FXML
-    Label confirmationmodif;
-    @FXML
     TextField SearchBar;
     Date date;
     Stage stage;
-    @FXML
-    Button buttontest;
     @FXML
     CheckBox checkboxclient;
     @FXML
@@ -148,8 +129,30 @@ public class Adminctrl implements Initializable{
     ImageView banned;
     static Agent agent;
     static Client client;
-   ObservableList<Agent> agentlist= (FXCollections.observableArrayList(AfficherAgent())) ;
-
+    @FXML
+    TextField tfidad;
+    @FXML
+    TextField tfnomad;
+    @FXML
+    TextField tfprenomad;
+    @FXML
+    TextField tfemailad;
+    @FXML
+    TextField tfnumtelad;
+    @FXML
+    TextField tfddnad;
+    @FXML
+    Button supration;
+    @FXML
+    Button modifation;
+    @FXML
+    Button bannation;
+    @FXML
+    Button supration1;
+    @FXML
+    Button supration2;
+    @FXML
+    Button supration11;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -217,14 +220,7 @@ public class Adminctrl implements Initializable{
         adminddn.setChronology(null);
         adminnumtel.setText("");
     }
-    public void display(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/showagent.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
-    }
+
     public void onquitad(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/authetification.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -235,147 +231,96 @@ public class Adminctrl implements Initializable{
     }
 
     public void update(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/updateagent.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
+        Agent selectedItem = tvbox.getSelectionModel().getSelectedItem();
+        tfidad.setText(String.valueOf(selectedItem.getId()));
+        tfprenomad.setText(selectedItem.getPrenom());
+        tfnomad.setText(selectedItem.getNom());
+        tfemailad.setText(selectedItem.getEmail());
+        tfnumtelad.setText(selectedItem.getNumTel());
+        tfddnad.setText(selectedItem.getDateNaissance());
+        supration.setVisible(false);
+        modifation.setVisible(false);
+        bannation.setVisible(false);
+        supration11.setVisible(true);
+        supration2.setVisible(true);
     }
-    public void delete(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/suppragent.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void rusure(){
-        if (supprId.getText().isEmpty()){
-            eror.setVisible(true);
-            eror.setText("VEUILLEZ REMPLIR LE CHAMP ID AVANT DE CLIQUER SUR 'SUPPRIMER'");
-        }
-        else {
-            agent=AfficherAgentCondition(Integer.parseInt(supprId.getText()));
-            if (agent==null) {
-                eror.setVisible(true);
-                eror.setText("Agent n'existe pas");
-            }
-            else {
-            eror.setVisible(false);
-            nomlab.setVisible(true);
-            prenomlab.setVisible(true);
-            numtellab.setVisible(true);
-            emaillab.setVisible(true);
-            supprnom.setVisible(true);
-            supprprenom.setVisible(true);
-            supprnumtel.setVisible(true);
-            suppremail.setVisible(true);
-            usure.setVisible(true);
-            ouidel.setVisible(true);
-            nondel.setVisible(true);
-            check.setVisible(true);
-            cross.setVisible(true);
-            supprnom.setText(agent.getNom());
-            supprprenom.setText(agent.getPrenom());
-            supprnumtel.setText(agent.getNumTel());
-            suppremail.setText(agent.getEmail());
-            }
+    public void delete() {
+            Agent selectedItem = tvbox.getSelectionModel().getSelectedItem();
+            tfidad.setText(String.valueOf(selectedItem.getId()));
+            tfprenomad.setText(selectedItem.getPrenom());
+            tfnomad.setText(selectedItem.getNom());
+            tfemailad.setText(selectedItem.getEmail());
+            tfnumtelad.setText(selectedItem.getNumTel());
+            tfddnad.setText(selectedItem.getDateNaissance());
+            supration.setVisible(false);
+            modifation.setVisible(false);
+            bannation.setVisible(false);
+            supration1.setVisible(true);
+            supration2.setVisible(true);
 
-        }
+     }
 
 
+     public void delete1(){
+        Agent agent1=new Agent();
+        agent1.setId(Integer.parseInt(tfidad.getText()));
+        agent1.setPrenom(tfprenomad.getText());
+        agent1.setNom(tfnomad.getText());
+        agent1.setEmail(tfemailad.getText());
+        agent1.setNumTel(tfnumtelad.getText());
+        agent1.setDateNaissance(tfddnad.getText());
+        a.SupprAgent(agent1);
+        showagents();
+        tfidad.setText("");
+        tfprenomad.setText("");
+        tfnomad.setText("");
+        tfemailad.setText("");
+        tfnumtelad.setText("");
+        tfddnad.setText("");
+         supration.setVisible(true);
+         modifation.setVisible(true);
+         bannation.setVisible(true);
+         supration1.setVisible(false);
+         supration2.setVisible(false);
+     }
+    public void delete2(){
+        tfidad.setText("");
+        tfprenomad.setText("");
+        tfnomad.setText("");
+        tfemailad.setText("");
+        tfnumtelad.setText("");
+        tfddnad.setText("");
+        supration.setVisible(true);
+        modifation.setVisible(true);
+        bannation.setVisible(true);
+        supration1.setVisible(false);
+        supration2.setVisible(false);
     }
-    public void affichemaj(){
-        if (afficheid.getText().isEmpty()){
-            eror.setVisible(true);
-            eror.setText("VEUILLEZ REMPLIR LE CHAMP ID AVANT DE CLIQUER SUR 'SUPPRIMER'");
-        }
-        else {
-            agent=AfficherAgentCondition(Integer.parseInt(afficheid.getText()));
-            if (agent==null) {
-                eror.setVisible(true);
-                eror.setText("Agent n'existe pas");
-            }
-            else {
-                eror.setVisible(false);
-                nomlab.setVisible(true);
-                prenomlab.setVisible(true);
-                numtellab.setVisible(true);
-                emaillab.setVisible(true);
-                updatenom.setVisible(true);
-                updateprenom.setVisible(true);
-                updatenumtel.setVisible(true);
-                updatemail.setVisible(true);
-                updatenom.setText(agent.getNom());
-                updateprenom.setText(agent.getPrenom());
-                updatenumtel.setText(agent.getNumTel());
-                updatemail.setText(agent.getEmail());
-                buttonmodifagent.setVisible(true);
-            }
 
-        }
-
-
+    public void modif1(){
+        Agent agent2=new Agent();
+        agent2.setId(Integer.parseInt(tfidad.getText()));
+        agent2.setPrenom(tfprenomad.getText());
+        agent2.setNom(tfnomad.getText());
+        agent2.setEmail(tfemailad.getText());
+        agent2.setNumTel(tfnumtelad.getText());
+        agent2.setDateNaissance(tfddnad.getText());
+        a.ModifAgent(agent2,agent2.getEmail());
+        showagents();
+        tfidad.setText("");
+        tfprenomad.setText("");
+        tfnomad.setText("");
+        tfemailad.setText("");
+        tfnumtelad.setText("");
+        tfddnad.setText("");
+        supration.setVisible(true);
+        modifation.setVisible(true);
+        bannation.setVisible(true);
+        supration11.setVisible(false);
+        supration2.setVisible(false);
     }
-    public void onmodif(){
-        Agent a=new Agent();
-        int id= Integer.parseInt(afficheid.getText());
-        a.setNom(updatenom.getText());
-        a.setPrenom(updateprenom.getText());
-        a.setEmail(updatemail.getText());
-        a.setNumTel(updatenumtel.getText());
-        confirmationmodif.setText(ModifAgent(a,id));
-    }
-    public void ouisuppr(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/admin_interface.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
-        result.setText(SupprAgent(agent));
-    }
-    public void nonsuppr(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/admin_interface.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void affiche(){
-        agent=AfficherAgentCondition(Integer.parseInt(afficheid.getText()));
-        if (agent==null) {
-            eror.setVisible(true);
-            eror.setText("Agent n'existe pas");
-        }
-        else {
-            eror.setVisible(false);
-            nomlab.setVisible(true);
-            prenomlab.setVisible(true);
-            numtellab.setVisible(true);
-            emaillab.setVisible(true);
-            affichenom.setVisible(true);
-            afficheprenom.setVisible(true);
-            affichenumtel.setVisible(true);
-            affichemail.setVisible(true);
-            affichenom.setText(agent.getNom());
-            afficheprenom.setText(agent.getPrenom());
-            affichenumtel.setText(agent.getNumTel());
-            affichemail.setText(agent.getEmail());
-        }
 
 
-    }
-    public void gobackaffichage(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/admin_interface.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("");
-        stage.setScene(scene);
-        stage.show();
-    }
     public void retourdelete(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/admin_interface.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -548,6 +493,16 @@ public class Adminctrl implements Initializable{
     }
     public void refreshpls(){
         showagents();
+    }
+    public void checkyoself(){
+        if (checker.isSelected()){
+            adminmdp1.setVisible(true);
+            adminmdp1.setText(adminmdp.getText());
+        }
+        else {
+            adminmdp.setText(adminmdp1.getText());
+            adminmdp1.setVisible(false);
+        }
     }
 }
 
