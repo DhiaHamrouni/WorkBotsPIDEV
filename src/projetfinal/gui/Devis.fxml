@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -14,8 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="projetfinal.gui.DevisController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetfinal.gui.DevisController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
          <stylesheets>
@@ -29,45 +27,34 @@
                <children>
                   <Pane layoutX="2.0" layoutY="5.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #244357;">
                      <children>
-                        <SplitPane dividerPositions="0.35528785982478095" layoutX="-1.0" layoutY="53.0" prefHeight="667.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
+                        <SplitPane dividerPositions="0.33260325406758445" layoutX="-1.0" layoutY="53.0" prefHeight="667.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
                            <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="719.0" prefWidth="473.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="426.0">
                                  <children>
                                     <Label fx:id="labelModifier" layoutX="70.0" layoutY="14.0" text="AJOUTER UN NOUVEAU DEVIS :" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="19.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="16.0" layoutY="67.0" text="NOM CLIENT :" textFill="WHITE">
+                                    <Label layoutX="7.0" layoutY="67.0" text="NOM CLIENT :" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="12.0" layoutY="118.0" text="NUM DEVIS :" textFill="WHITE">
+                                    <Label layoutX="7.0" layoutY="108.0" text="NOM COMERCIAL :" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="164.0" text="NOM COMERCIAL :" textFill="WHITE">
+                                    <Label layoutX="9.0" layoutY="151.0" text="MISSION :" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="21.0" layoutY="214.0" text="TITRE :" textFill="WHITE">
-                                       <font>
-                                          <Font name="Montserrat Regular" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="17.0" layoutY="261.0" text="MISSION :" textFill="WHITE">
-                                       <font>
-                                          <Font name="Montserrat Regular" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfIDPrestataire" layoutX="256.0" layoutY="69.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
-                                    <TextField fx:id="tfNomCommercial" layoutX="256.0" layoutY="120.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
-                                    <TextField fx:id="tfDomaineService" layoutX="256.0" layoutY="166.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
-                                    <TextField fx:id="tfNumTel" layoutX="256.0" layoutY="263.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
-                                    <Button fx:id="btnAjouterPrestataire" layoutX="204.0" layoutY="591.0" mnemonicParsing="false" onAction="#AjouterPrestataireAction" prefHeight="42.0" prefWidth="226.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Ajouter Devis">
+                                    <TextField fx:id="tfNomClient" layoutX="229.0" layoutY="69.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
+                                    <TextField fx:id="tfNomCommerciall" layoutX="229.0" layoutY="110.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
+                                    <TextField fx:id="tfMission" layoutX="228.0" layoutY="153.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
+                                    <Button fx:id="btnAjouterDevis" layoutX="182.0" layoutY="590.0" mnemonicParsing="false" onAction="#AjouterDevisAction" prefHeight="42.0" prefWidth="226.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Ajouter Devis">
                                        <font>
                                           <Font name="Montserrat Regular" size="18.0" />
                                        </font>
@@ -77,60 +64,80 @@
                                           <Font name="Montserrat Regular" size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnModifierPrestataire" layoutX="204.0" layoutY="590.0" mnemonicParsing="false" onAction="#ModifierPrestataireAction" prefHeight="42.0" prefWidth="226.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="modifier Devis" visible="false">
+                                    <Button fx:id="btnModifierDevis" layoutX="182.0" layoutY="590.0" mnemonicParsing="false" onAction="#ModifierDevisAction" prefHeight="42.0" prefWidth="226.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="modifier Devis" visible="false">
                                        <font>
                                           <Font name="Montserrat Regular" size="18.0" />
                                        </font>
                                     </Button>
-                                    <DatePicker layoutX="254.0" layoutY="304.0" />
-                                    <DatePicker layoutX="254.0" layoutY="352.0" />
-                                    <DatePicker layoutX="254.0" layoutY="404.0" />
-                                    <Label layoutX="25.0" layoutY="302.0" text="DATE :" textFill="#efefef">
+                                    <DatePicker fx:id="dpDate" layoutX="237.0" layoutY="195.0" prefHeight="26.0" prefWidth="154.0" />
+                                    <DatePicker fx:id="dpValableJusqua" layoutX="236.0" layoutY="237.0" prefHeight="26.0" prefWidth="154.0" />
+                                    <DatePicker fx:id="dpDateCommencement" layoutX="240.0" layoutY="284.0" prefHeight="26.0" prefWidth="154.0" />
+                                    <Label layoutX="11.0" layoutY="193.0" text="DATE :" textFill="#efefef">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="350.0" text="VALABLE JUSQU'A" textFill="WHITE">
+                                    <Label layoutX="4.0" layoutY="237.0" text="VALABLE JUSQU'A:" textFill="WHITE">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="13.0" layoutY="402.0" text="DATE COMMENCEMENT :" textFill="WHITE">
+                                    <Label layoutX="2.0" layoutY="280.0" text="DATE COMMENCEMENT :" textFill="WHITE">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="252.0" layoutY="216.0" prefHeight="26.0" prefWidth="182.0" />
+                                    <Label layoutX="14.0" layoutY="369.0" text="PRIX TTC :" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="328.0" text="PRIX HT :" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tfPrixHT" layoutX="237.0" layoutY="333.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
+                                    <TextField fx:id="tfPrixTTC" layoutX="234.0" layoutY="378.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-radius: 10;" />
+                                    <Label layoutX="6.0" layoutY="425.0" text="DESCRIPTION :" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tfDescription" layoutX="162.0" layoutY="425.0" prefHeight="150.0" prefWidth="246.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="841.0">
                                  <children>
-                                    <Button fx:id="btnAfficherPrestataire" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" onAction="#AfficherPrestataireAction" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Afficher Ce Prestataire">
+                                    <Button fx:id="btnAfficherDevis" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" onAction="#AfficherDevisAction" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Actualiser">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="14.0" layoutY="43.0" text="ID PRESTATAIRE :" textFill="WHITE">
+                                    <Label layoutX="14.0" layoutY="43.0" text="NUM DEVIS :" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="20.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="tfIdPrestataire2" layoutX="167.0" layoutY="40.0" prefHeight="35.0" prefWidth="172.0" promptText="&quot;1234567&quot;" />
-                                    <TableView fx:id="tablePrestataire" layoutX="76.0" layoutY="265.0" prefHeight="380.0" prefWidth="671.0">
+                                    <TextField fx:id="tfNumDevis" layoutX="167.0" layoutY="40.0" prefHeight="35.0" prefWidth="172.0" promptText="&quot;1234567&quot;" />
+                                    <TableView fx:id="tablePrestataire" layoutX="12.0" layoutY="265.0" prefHeight="380.0" prefWidth="828.0">
                                        <columns>
-                                          <TableColumn fx:id="clmID" prefWidth="75.0" text="ID" />
-                                          <TableColumn fx:id="clmNomCommercial" prefWidth="128.7999267578125" text="NOM_COMMERCIAL" />
-                                          <TableColumn fx:id="clmDomaineService" prefWidth="161.5999755859375" text="DOMAINE_SERVICE" />
-                                          <TableColumn fx:id="clmNumTel" minWidth="1.60003662109375" prefWidth="124.80007934570312" text="NUM TEL" />
-                                          <TableColumn fx:id="clmEmail" minWidth="0.0" prefWidth="179.20000000000005" text="EMAIL" />
+                                          <TableColumn fx:id="clm_numDevis" prefWidth="75.0" text="NUM DEVIS" />
+                                          <TableColumn fx:id="clm_nomClient" prefWidth="95.20001220703125" text="NOM CLIENT" />
+                                          <TableColumn fx:id="clm_nomCommercial" prefWidth="133.60003662109375" text="NOM COMMERCIAL" />
+                                          <TableColumn fx:id="clm_mission" minWidth="1.60003662109375" prefWidth="137.59991455078125" text="MISSION" />
+                                          <TableColumn fx:id="clm_date" minWidth="0.0" prefWidth="102.4000244140625" text="DATE" />
+                                          <TableColumn fx:id="clm_valableJusquA" prefWidth="119.2000732421875" text="VALABLE JUSQU'A" />
+                                          <TableColumn fx:id="clm_prixTTC" prefWidth="84.0001220703125" text="PRIX TTC" />
+                                          <TableColumn fx:id="clm_prixHT" prefWidth="75.0" text="PRIX HT" />
                                        </columns>
                                     </TableView>
-                                    <Button fx:id="btnUpdatePrestataire" layoutX="412.0" layoutY="91.0" mnemonicParsing="false" onAction="#UpdatePrestataireAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Mettre À Jour Ce Prestataire">
+                                    <Button fx:id="btnUpdateDevis" layoutX="412.0" layoutY="91.0" mnemonicParsing="false" onAction="#UpdateDevisAction" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Mettre À Jour Ce Devis">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnSupprimerPrestataire" layoutX="412.0" layoutY="145.0" mnemonicParsing="false" onAction="#SupprimerPrestataireAction" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Supprimer Ce Prestataire">
+                                    <Button fx:id="btnSupprimerDevis" layoutX="412.0" layoutY="145.0" mnemonicParsing="false" onAction="#SupprimerDevisAction" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Supprimer Ce Devis">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -140,7 +147,7 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="prestataireRechercheF" layoutX="120.0" layoutY="215.0" prefHeight="26.0" prefWidth="617.0" promptText="RECHERCHE" />
+                                    <TextField fx:id="DevisRechercheF" layoutX="120.0" layoutY="215.0" prefHeight="26.0" prefWidth="617.0" promptText="RECHERCHE" />
                                  </children>
                               </AnchorPane>
                            </items>
