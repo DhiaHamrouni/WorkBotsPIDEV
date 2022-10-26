@@ -5,6 +5,15 @@
 package projetfinal.services;
 
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mysql.cj.xdevapi.Table;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -200,5 +209,56 @@ public class devisService {
     return dateToConvert.toInstant()
       .atZone(ZoneId.systemDefault())
       .toLocalDate();
-}           
+}
+        
+        public void rapportpdfContrat(Devis d){
+            
+            float col =280f;
+            float columnWidth[]={col,col};
+        try {
+        String file_name="C:\\Users\\GAMING\\Desktop\\devis.pdf"; 
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream(file_name));
+        document.open();
+        PdfPTable table1 = new PdfPTable(columnWidth);
+        PdfPCell c1 = new PdfPCell(new Phrase("holla"));
+        table1.addCell(c1);
+        Paragraph para88 = new Paragraph ("   ------------------------------------------| DEVIS NUM REF"+ d.getNum_devis()  +": |-----------------------------------------");
+        Paragraph para = new Paragraph ("   ------------------------------------------| Agence immobiliier viva la villa |-----------------------------------------");
+        //Image img =Image.getInstance("C:\\Users\\GAMING\\Desktop\\4 SE 3\\projet\\projetFinal\\src\\images\\logo.png");
+        //document.add(img);
+        document.add(para88);
+        document.add(para);
+        Paragraph para1 = new Paragraph("Nom du client: "+d.getNom_client()+"\n \n \n");
+        Paragraph para2 = new Paragraph("Nom du Prestataire: "+d.getNom_commercial()+"\n \n \n");
+        Paragraph para3 = new Paragraph("Nom du mission: "+d.getMission()+"\n \n \n");
+        Paragraph para5 = new Paragraph("Cin du description: "+d.getDescription()+"\n \n \n");
+        Paragraph para6 = new Paragraph("Cin du client: "+d.getNom_client()+"\n \n \n");        
+        Paragraph para4 = new Paragraph("Description : "+d.getDescription()+"\n \n \n");
+        
+        Paragraph para7 = new Paragraph("Date : "+d.getDate()+"\n \n \n");
+        Paragraph para8 = new Paragraph("Date commencement : "+d.getDate_commencement()+"\n \n \n");
+        Paragraph para9 = new Paragraph("Prix TTC : "+d.getPrix_ttc()+"\n \n \n");        
+        Paragraph para10 = new Paragraph("Prix HT : "+d.getPrix_ht()+"\n \n \n");
+        Paragraph para11 = new Paragraph("Date de Validité : "+d.getValable_jusqu_à()+"\n \n \n");
+        
+        document.add(para1);
+        document.add(para2);
+        document.add(para3);
+        document.add(para5);
+        document.add(para6);
+        document.add(para4);
+
+        document.add(para7);
+        document.add(para8);
+        document.add(para9);
+        document.add(para10);
+        document.add(para11);
+        
+        document.close();
+        
+        }
+        catch (Exception e){
+        System.err.println(e);}
+        }   
 }

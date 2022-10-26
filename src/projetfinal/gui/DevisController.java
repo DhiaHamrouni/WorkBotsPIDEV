@@ -94,6 +94,8 @@ public class DevisController implements Initializable {
     private TextField DevisRechercheF;
     @FXML
     private TableColumn<Devis, Float> clm_prixHT;
+    @FXML
+    private Button btnImprimerDevis;
     
 
 
@@ -161,6 +163,7 @@ public class DevisController implements Initializable {
 
     @FXML
     private void EffacerAction(ActionEvent event) {
+        
     }
 
     @FXML
@@ -260,4 +263,15 @@ public class DevisController implements Initializable {
       .atZone(ZoneId.systemDefault())
       .toLocalDate();
 }
+
+    @FXML
+    private void ImprimerDevisAction(ActionEvent event) {
+        Devis selectedItem = tablePrestataire.getSelectionModel().getSelectedItem();
+        devisService ds =new devisService();
+        ds.rapportpdfContrat(selectedItem);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(" PDF genéré");
+        alert.setContentText("PDF genéré avec succes");
+        alert.show();
+    }
 }

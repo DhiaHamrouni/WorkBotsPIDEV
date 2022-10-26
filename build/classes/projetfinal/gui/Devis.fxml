@@ -120,7 +120,7 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="tfNumDevis" layoutX="167.0" layoutY="40.0" prefHeight="35.0" prefWidth="172.0" promptText="&quot;1234567&quot;" />
-                                    <TableView fx:id="tablePrestataire" layoutX="12.0" layoutY="265.0" prefHeight="380.0" prefWidth="828.0">
+                                    <TableView fx:id="tablePrestataire" layoutX="8.0" layoutY="236.0" prefHeight="380.0" prefWidth="828.0">
                                        <columns>
                                           <TableColumn fx:id="clm_numDevis" prefWidth="75.0" text="NUM DEVIS" />
                                           <TableColumn fx:id="clm_nomClient" prefWidth="95.20001220703125" text="NOM CLIENT" />
@@ -142,12 +142,17 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="36.0" layoutY="218.0" text="RECHERCHE" textFill="WHITE">
+                                    <Label layoutX="31.0" layoutY="200.0" text="RECHERCHE" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="DevisRechercheF" layoutX="120.0" layoutY="215.0" prefHeight="26.0" prefWidth="617.0" promptText="RECHERCHE" />
+                                    <TextField fx:id="DevisRechercheF" layoutX="120.0" layoutY="197.0" prefHeight="26.0" prefWidth="617.0" promptText="RECHERCHE" />
+                                    <Button fx:id="btnImprimerDevis" layoutX="438.0" layoutY="625.0" mnemonicParsing="false" onAction="#ImprimerDevisAction" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Imprimer PDF">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </items>
