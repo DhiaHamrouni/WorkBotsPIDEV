@@ -4,6 +4,7 @@
  */
 package projetfinal.gui;
 
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -30,6 +31,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import projetfinal.entities.Devis;
 import projetfinal.services.devisService;
 
@@ -125,7 +129,8 @@ public class DevisController implements Initializable {
         SortedList<Devis> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tablePrestataire.comparatorProperty());
         
-        tablePrestataire.setItems(sortedData);        
+        tablePrestataire.setItems(sortedData);   
+
     }    
         public int getNum_devis2() {
         return Integer.parseInt(tfNumDevis.getText()) ;
@@ -144,7 +149,7 @@ public class DevisController implements Initializable {
         String  description =tfDescription.getText();
         Devis d = new Devis(nom_client, nom_commercial, date, valable_jusqu_a, mission, date_commencement, prix_ttc, prix_ht, description);
         devisService ds =new devisService();
-        ds.ajouterPrestataire(d);
+        ds.ajoutereDevis(d);
         AfficherDevisAction();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Confirmation d'ajout ");
@@ -177,12 +182,18 @@ public class DevisController implements Initializable {
         float   prix_ttc =Float.parseFloat(tfPrixTTC.getText());
         float   prix_ht =Float.parseFloat(tfPrixHT.getText());
         String  description =tfDescription.getText();
-        Devis d = new Devis(nom_client, nom_commercial, date, valable_jusqu_a, mission, date_commencement, prix_ttc, prix_ht, description);
+        
+        Devis d = new Devis(nom_client,Integer.parseInt(labelModifier.getText()),nom_commercial,date, valable_jusqu_a, mission, date_commencement, prix_ttc, prix_ht, description);
         devisService ds =new devisService();
         ds.ModifierDevis(d);
+        AfficherDevisAction();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Confirmation de modification ");
+        alert.setContentText("Devis modifier avec succes");
+        alert.show();
         labelModifier.setText("AJOUTER UN DEVIS ");
-        btnModifierDevis.setVisible(true);
-        btnAjouterDevis.setVisible(false); 
+        btnModifierDevis.setVisible(false);
+        btnAjouterDevis.setVisible(true); 
         tfNomClient.setText("");
         tfNomCommerciall.setText("");
         dpDate.setValue(null);  
@@ -214,7 +225,7 @@ public class DevisController implements Initializable {
 
     @FXML
     private void UpdateDevisAction(ActionEvent event) {
-        labelModifier.setText("MODIFIER CE  DEVIS ");
+        //labelModifier.setText("MODIFIER CE  DEVIS ");
         
         btnModifierDevis.setVisible(true);
         btnAjouterDevis.setVisible(false);
@@ -247,6 +258,7 @@ public class DevisController implements Initializable {
     private void index1() {
         devisService ds = new devisService();         
         Devis selectedItem = tablePrestataire.getSelectionModel().getSelectedItem();
+        labelModifier.setText(String.valueOf(selectedItem.getNum_devis()));
         tfNomClient.setText(String.valueOf(selectedItem.getNom_client()));
         tfNomCommerciall.setText(selectedItem.getNom_commercial());
         tfMission.setText(selectedItem.getMission());

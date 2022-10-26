@@ -37,7 +37,20 @@ public class Devis {
         this.description = description;
     }
 
+    public Devis(String nom_client, int num_devis, String nom_commercial, Date date, Date valable_jusqu_à, String mission, Date date_commencement, float prix_ttc, float prix_ht, String description) {
+        this.nom_client = nom_client;
+        this.num_devis = num_devis;
+        this.nom_commercial = nom_commercial;
+        this.date = date;
+        this.valable_jusqu_à = valable_jusqu_à;
+        this.mission = mission;
+        this.date_commencement = date_commencement;
+        this.prix_ttc = prix_ttc;
+        this.prix_ht = prix_ht;
+        this.description = description;
+    }
 
+    
 
 
 

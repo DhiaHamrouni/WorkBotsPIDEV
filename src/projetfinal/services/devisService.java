@@ -37,7 +37,7 @@ public class devisService {
     public devisService(){
         cnx2 = MyConnexion.getInstance().getCnx();
     }
-    public void ajouterPrestataire(Devis d){
+    public void ajoutereDevis(Devis d){
         try{
             String req="INSERT INTO `devis_service`(`nom_client`, `nom_commercial`, `date`, `valable_jusqu_à`, `mission`, `date_commencement`, `prix_ttc`, `prix_ht`, `description`) VALUES  (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst =(PreparedStatement)cnx2.prepareStatement(req);
@@ -102,20 +102,19 @@ public class devisService {
             public void ModifierDevis(Devis d){
         
         try {
-            String req4= "UPDATE `devis_service` SET `nom_client`=?,`num_devis`=?,`nom_commercial`=?,`date`=?,`valable_jusqu_à`=?,`mission`=?,`date_commencement`=?,`prix_ttc`=?,`prix_ht`=?,`description`=? WHERE num_devis = ?";
+            String req4= "UPDATE `devis_service` SET `nom_client`=?,`nom_commercial`=?,`date`=?,`valable_jusqu_à`=?,`mission`=?,`date_commencement`=?,`prix_ttc`=?,`prix_ht`=?,`description`=? WHERE `num_devis`= ?";
             PreparedStatement pst = cnx2.prepareStatement(req4);
             
             pst.setString(1,d.getNom_client());
-            pst.setInt(2, d.getNum_devis());
-            pst.setString(3, d.getNom_commercial());
-            pst.setDate(4, d.getDate());
-            pst.setDate(5, d.getValable_jusqu_à());
-            pst.setString(6,d.getMission()); 
-            pst.setDate(7, d.getDate_commencement());
-            pst.setFloat(8, d.getPrix_ttc());
-            pst.setFloat(9, d.getPrix_ht());
-            pst.setString(10,d.getDescription());
-            pst.setInt(11, d.getNum_devis());
+            pst.setString(2, d.getNom_commercial());
+            pst.setDate(3, d.getDate());
+            pst.setDate(4, d.getValable_jusqu_à());
+            pst.setString(5, d.getMission());
+            pst.setDate(6, d.getDate_commencement());
+            pst.setFloat(7, d.getPrix_ttc());
+            pst.setFloat(8, d.getPrix_ht());
+            pst.setString(9,d.getDescription());
+            pst.setInt(10, d.getNum_devis());
             pst.executeUpdate();
             System.out.println("Votre devis est modifie !!");
         } catch (SQLException ex) {
