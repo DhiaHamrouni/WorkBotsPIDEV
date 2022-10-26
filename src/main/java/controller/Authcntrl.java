@@ -73,18 +73,12 @@ public class Authcntrl {
                     }
                     else {
                         String username = logindh.getText();
-                        String req = "SELECT 'prenom' FROM `clients` WHERE Email='"+username+"'";
-                        Statement st1;
-                        Connection cnx1 = MyConnexion.getInstance().getCnx();
-                        st1 = cnx1.createStatement();
-                        ResultSet result1 = st.executeQuery(req);
-
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/client_interface.fxml"));
                         root = loader.load();
 
                         Clientcntrl scene2Controller = loader.getController();
-                        scene2Controller.getName(result1.getString(1));
-
+                        //scene2Controller.getName(result1.getString(4));
+                        scene2Controller.getName(username);
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         Scene scene = new Scene(root);
                         stage.setScene(scene);

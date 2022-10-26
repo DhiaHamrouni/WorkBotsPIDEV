@@ -35,6 +35,10 @@ public class AgentCRUD  {
             pst1.setString(3,"agent");
             pst1.setString(4,"Unbanned");
             pst1.executeUpdate();
+            String req4= "INSERT INTO `congiet` (`id_agent`, `jours_dispo`) VALUES (?,30)";
+            PreparedStatement pst2 = new MyConnexion().getCnx().prepareStatement(req4);
+            pst1.setString(1, String.valueOf(a.getId()));
+            pst1.executeUpdate();
 
             return ("Votre agent est ajouté avec succée");
         } catch (SQLException ex) {
@@ -70,6 +74,10 @@ public class AgentCRUD  {
             String req3= "DELETE FROM `users` WHERE Email = ?";
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
             pst1.setString(1, chdel);
+            pst1.executeUpdate();
+            String req4= "DELETE FROM `congiet` WHERE id_agent = ?";
+            PreparedStatement pst2 = new MyConnexion().getCnx().prepareStatement(req4);
+            pst1.setString(1, String.valueOf(a.getId()));
             pst1.executeUpdate();
             return ("L'agent est supprime avec succee!");
         } catch (SQLException ex) {

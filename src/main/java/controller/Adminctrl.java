@@ -295,6 +295,7 @@ public class Adminctrl implements Initializable{
         bannation.setVisible(true);
         supration1.setVisible(false);
         supration2.setVisible(false);
+        supration11.setVisible(false);
     }
 
     public void modif1(){

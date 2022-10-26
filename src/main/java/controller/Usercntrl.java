@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -46,6 +47,27 @@ public class Usercntrl {
             switch (result.getString(3)){
                 case ("client"):
                 {
+                    if (result.getString(4)=="Banned"){
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/authetification.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        stage.setTitle("");
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else {
+                        String username = login_user.getText();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/client_interface.fxml"));
+                        Parent root = loader.load();
+
+                        Clientcntrl scene2Controller = loader.getController();
+                        //scene2Controller.getName(result1.getString(4));
+                        scene2Controller.getName(username);
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
                 }
                 case ("agent"):
                 {

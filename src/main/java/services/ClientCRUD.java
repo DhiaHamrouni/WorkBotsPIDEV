@@ -37,28 +37,36 @@ public class ClientCRUD {
             return (ex.getMessage());
         }
     }
-    public static String ModifClient(Client cl,Integer id){
+    public static String ModifClient(Client cl,String email){
         try {
-            String req2= "UPDATE `clients` SET Nom=?, Prenom=?, email=?, num_tel=? , adresse=? WHERE Id="+id;
+            String req2= "UPDATE `clients` SET CIN=?, Nom=?, Prenom=?, email=?, num_tel=? , adresse=? WHERE email='"+email+"'";
+            String req3="UPDATE `users` SET email=? where email='"+email+"'";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
-            pst.setString(1, cl.getNom());
-            pst.setString(2, cl.getPrenom());
-            pst.setString(3,cl.getEmail());
-            pst.setString(4,cl.getNum_tel());
-            pst.setString(5,cl.getAdresse());
+            PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
+            pst.setString(1, cl.getCIN());
+            pst.setString(2, cl.getNom());
+            pst.setString(3, cl.getPrenom());
+            pst.setString(4,cl.getEmail());
+            pst.setString(5,cl.getNum_tel());
+            pst.setString(6,cl.getAdresse());
+            pst1.setString(1,cl.getEmail());
             pst.executeUpdate();
-            return ("Votre Client est modifie avecc succee!");
+            pst1.executeUpdate();
+            return ("Votre Compte est modifie avecc succee!");
         } catch (SQLException ex) {
             return (ex.getMessage());
         }
     }
-    public static String SupprClient(Client cl){
-        String chdel=String.valueOf(cl.getCIN());
+    public static String SupprClient(String email){
         try {
-            String req2= "DELETE FROM `clients` WHERE CIN = ?";
+            String req2= "DELETE FROM `clients` WHERE email = ?";
+            String req3="DELETE FROM `users` WHERE email = ?";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
-            pst.setString(1, chdel);
+            PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
+            pst.setString(1, email);
+            pst1.setString(1, email);
             pst.executeUpdate();
+            pst1.executeUpdate();
             return ("Le Client est supprime avec succee!");
         } catch (SQLException ex) {
             return (ex.getMessage());
@@ -111,6 +119,35 @@ public class ClientCRUD {
                 cl.setNum_tel(result.getString(5));
                 cl.setDate_naissance(result.getString(6));
                 cl.setAdresse(result.getString(7));
+                return cl;
+            } else {
+                System.out.println("Agent n existe pas");
+            }
+
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return cl;
+    }
+    public static Client AfficherClientCondition1(String email) {
+        List<Client> myList = new ArrayList<>();
+        Client cl = null;
+        try {
+
+            String req3 = "SELECT `CIN`, `Nom`, `Prenom`, `email`, `num_tel`, `adresse` FROM `clients` WHERE email='"+email+"'";
+            Statement st;
+            Connection cnx = MyConnexion.getInstance().getCnx();
+            st = cnx.createStatement();
+            ResultSet result = st.executeQuery(req3);
+            if (result.next()) {
+                cl = new Client();
+                cl.setCIN(result.getString(1));
+                cl.setNom(result.getString(2));
+                cl.setPrenom(result.getString(3));
+                cl.setEmail(result.getString(4));
+                cl.setNum_tel(result.getString(5));
+                cl.setAdresse(result.getString(6));
                 return cl;
             } else {
                 System.out.println("Agent n existe pas");
