@@ -3,79 +3,136 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="844.0" prefWidth="1222.0" style="-fx-background-color: #244357;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vivalavilla.gestioncontrat.gui.WindowAjouterController">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #244357;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vivalavilla.gestioncontrat.gui.WindowAjouterController">
    <children>
-      <Label layoutX="57.0" layoutY="623.0" text="Nom Bien" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="349.0" prefHeight="30.0" prefWidth="106.0" text="Nom Bien" textFill="WHITE">
          <font>
-            <Font name="Verdana" size="15.0" />
+            <Font size="20.0" />
          </font></Label>
-      <Label layoutX="623.0" layoutY="623.0" text="Prix Bien" textFill="WHITE" />
-      <Label layoutX="57.0" layoutY="671.0" text="Nom Client" textFill="WHITE" />
-      <Label layoutX="57.0" layoutY="715.0" text="Cin Client" textFill="WHITE" />
-      <Label layoutX="57.0" layoutY="765.0" text="Date Vente" textFill="WHITE" />
-      <Label layoutX="623.0" layoutY="671.0" text="Nom Vendeur" textFill="WHITE" />
-      <Label layoutX="623.0" layoutY="715.0" text="Cin Vendeur" textFill="WHITE" />
-      <Label layoutX="623.0" layoutY="765.0" text="Agent" textFill="WHITE" />
-      <TextField fx:id="FxAjouterNomBien" layoutX="181.0" layoutY="618.0" style="-fx-background-radius: 10px; -fx-border-color: #CADCF0; -fx-border-radius: 10px;" />
-      <TextField fx:id="FxAjouterNomClient" layoutX="181.0" layoutY="666.0" style="-fx-background-radius: 10px;" />
-      <TextField fx:id="FxAjouterCinClient" layoutX="181.0" layoutY="710.0" style="-fx-background-radius: 10px;" />
-      <TextField fx:id="FxAjouterPrix" layoutX="766.0" layoutY="618.0" style="-fx-background-radius: 10px;" />
-      <TextField fx:id="FxAjouterNomVendeur" layoutX="766.0" layoutY="666.0" style="-fx-background-radius: 10px;" />
-      <TextField fx:id="FxAjouterCinVendeur" layoutX="766.0" layoutY="710.0" style="-fx-background-radius: 10px;" />
-      <TextField fx:id="FxAjouterAgent" layoutX="766.0" layoutY="760.0" style="-fx-background-radius: 10px;" />
-      <DatePicker fx:id="FxAjouterDate" layoutX="172.0" layoutY="760.0" style="-fx-background-radius: 10px;" />
-      <Button fx:id="FxBtnAjouter" layoutX="1032.0" layoutY="760.0" mnemonicParsing="false" onAction="#FxAjouterContrat" text="Ajouter" />
-      <Button layoutX="1101.0" layoutY="143.0" mnemonicParsing="false" onAction="#afficher" text="Actualiser" />
-      <Button fx:id="modifierContrat" layoutX="1107.0" layoutY="204.0" mnemonicParsing="false" onAction="#FxModifierContrat" text="Modifier" />
-      <Button fx:id="Supprbtn" layoutX="1101.0" layoutY="256.0" mnemonicParsing="false" onAction="#FxSupprimerContrat" text="Supprimer" />
-      <Label layoutX="1108.0" layoutY="70.0" text="Pannel" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+      <Label layoutX="39.0" layoutY="616.0" text="Prix Bien" textFill="WHITE">
          <font>
-            <Font size="24.0" />
-         </font>
-         <effect>
-            <Lighting diffuseConstant="0.0" specularConstant="0.0" specularExponent="0.0" surfaceScale="0.0">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
-      </Label>
-      <TableView fx:id="trvContrat" layoutX="35.0" layoutY="70.0" prefHeight="500.0" prefWidth="966.0" style="-fx-background-color: #CADCF0;">
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="30.0" layoutY="415.0" text="Nom Client" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="483.0" text="Cin Client" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="31.0" layoutY="550.0" text="Date Vente" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="30.0" layoutY="675.0" text="Nom Vendeur" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="727.0" text="Cin Vendeur" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="48.0" layoutY="784.0" text="Agent" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="FxAjouterNomBien" layoutX="196.0" layoutY="342.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterNomClient" layoutX="197.0" layoutY="410.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterCinClient" layoutX="197.0" layoutY="478.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterPrix" layoutX="197.0" layoutY="611.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterNomVendeur" layoutX="197.0" layoutY="670.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterCinVendeur" layoutX="197.0" layoutY="722.0" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="FxAjouterAgent" layoutX="197.0" layoutY="779.0" style="-fx-background-radius: 10px;" />
+      <DatePicker fx:id="FxAjouterDate" layoutX="196.0" layoutY="545.0" style="-fx-background-radius: 10px;" />
+      <Button fx:id="FxBtnAjouter" layoutX="208.0" layoutY="840.0" mnemonicParsing="false" onAction="#FxAjouterContrat" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Confirmer saisie">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <TableView fx:id="trvContrat" layoutX="515.0" layoutY="315.0" prefHeight="500.0" prefWidth="1042.0" style="-fx-background-color: #CADCF0;">
         <columns>
-          <TableColumn fx:id="trvAjouterContratId" prefWidth="75.0" text="id" />
-          <TableColumn fx:id="trvAjouterContratNomBien" prefWidth="75.0" text="nom bien" />
-            <TableColumn fx:id="trvAjouterContratPrixBien" prefWidth="75.0" text="prix bien" />
-            <TableColumn fx:id="trvAjouterContratNomClient" prefWidth="75.0" text="nom client" />
-            <TableColumn fx:id="trvAjouterContratCinClient" prefWidth="75.0" text="cin client" />
-            <TableColumn fx:id="trvAjouterContratNomVendeur" prefWidth="75.0" text="nom vendeur" />
-            <TableColumn fx:id="trvAjouterContratCinVendeur" prefWidth="75.0" text="cin vendeur" />
-            <TableColumn fx:id="trvAjouterContratAgent" prefWidth="75.0" text="agent" />
-            <TableColumn fx:id="trvAjouterContratDate" prefWidth="75.0" text="date" />
-            <TableColumn fx:id="trvAjouterContratBtns" prefWidth="104.0" text="actions" />
+          <TableColumn fx:id="trvAjouterContratId" prefWidth="116.0" text="reference" />
+          <TableColumn fx:id="trvAjouterContratNomBien" prefWidth="92.0" text="nom bien" />
+            <TableColumn fx:id="trvAjouterContratPrixBien" prefWidth="88.0" text="prix bien" />
+            <TableColumn fx:id="trvAjouterContratNomClient" prefWidth="131.0" text="nom client" />
+            <TableColumn fx:id="trvAjouterContratCinClient" prefWidth="98.0" text="cin client" />
+            <TableColumn fx:id="trvAjouterContratNomVendeur" prefWidth="116.0" text="nom vendeur" />
+            <TableColumn fx:id="trvAjouterContratCinVendeur" prefWidth="132.0" text="cin vendeur" />
+            <TableColumn fx:id="trvAjouterContratAgent" prefWidth="139.0" text="agent" />
+            <TableColumn fx:id="trvAjouterContratDate" prefWidth="129.0" text="date" />
         </columns>
       </TableView>
-      <Label layoutX="35.0" layoutY="23.0" text="Search" textFill="WHITE">
+      <Label layoutX="536.0" layoutY="244.0" text="Search" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="ContratSearchArea" layoutX="142.0" layoutY="25.0" prefHeight="31.0" prefWidth="857.0" promptText="Keywords..." />
-      <Label layoutX="57.0" layoutY="582.0" text="Ajouter un contrat" textFill="WHITE">
+      <TextField fx:id="ContratSearchArea" layoutX="664.0" layoutY="244.0" prefHeight="31.0" prefWidth="851.0" promptText="Keywords..." />
+      <Label layoutX="73.0" layoutY="229.0" text="Panneau de saisie" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="24.0" />
          </font>
       </Label>
+      <Label alignment="CENTER" layoutX="486.0" layoutY="45.0" prefHeight="106.0" prefWidth="769.0" style="-fx-border-color: white;" text="Gestion des contrats" textFill="WHITE">
+         <font>
+            <Font name="Nirmala UI" size="71.0" />
+         </font>
+      </Label>
+      <Separator layoutX="-8.0" layoutY="206.0" prefHeight="15.0" prefWidth="1627.0" />
+      <Separator layoutX="436.0" layoutY="213.0" orientation="VERTICAL" prefHeight="729.0" prefWidth="28.0" />
+      <Button fx:id="FxBtnClear" layoutX="30.0" layoutY="840.0" mnemonicParsing="false" onAction="#clearSelection" prefHeight="47.0" prefWidth="125.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Effacer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="FxBtnAjouter2" layoutX="565.0" layoutY="850.0" mnemonicParsing="false" onAction="#afficher" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Actualiser">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="Supprbtn" layoutX="1050.0" layoutY="850.0" mnemonicParsing="false" onAction="#FxSupprimerContrat" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Supprimer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="modifierContrat" layoutX="803.0" layoutY="850.0" mnemonicParsing="false" onAction="#index12" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Modifier">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="FxBtnAjouter5" layoutX="1383.0" layoutY="74.0" mnemonicParsing="false" onAction="#FxAjouterContrat" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Se deconnecter">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="214.0" fitWidth="452.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelmodifiable" layoutX="66.0" layoutY="286.0" text="Ajouter un contrat" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="FxBtnUpdate" layoutX="343.0" layoutY="278.0" mnemonicParsing="false" onAction="#FxModifierContrat" prefHeight="47.0" prefWidth="93.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Update">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="FxBtnPdf" layoutX="1292.0" layoutY="850.0" mnemonicParsing="false" onAction="#FxExporterPdf" prefHeight="47.0" prefWidth="196.0" style="-fx-background-color: #CADCF0; -fx-background-radius: 20;" text="Exporter pdf">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -22,9 +22,33 @@ public class Contrat {
     private String agent_contrat;
     private String date;
 
-    private CheckBox checkBox;
+    private String reference;
 
     public Contrat() {
+    }
+
+    public Contrat(int id_bien_contrat, String nom_bien_contrat, String prix_bien_contrat, String nom_client_contrat, String nom_vendeur_contrat, String cin_vendeur_contrat, String cin_client_contrat, String agent_contrat, String date, String reference) {
+        this.id_bien_contrat = id_bien_contrat;
+        this.nom_bien_contrat = nom_bien_contrat;
+        this.prix_bien_contrat = prix_bien_contrat;
+        this.nom_client_contrat = nom_client_contrat;
+        this.nom_vendeur_contrat = nom_vendeur_contrat;
+        this.cin_vendeur_contrat = cin_vendeur_contrat;
+        this.cin_client_contrat = cin_client_contrat;
+        this.agent_contrat = agent_contrat;
+        this.date = date;
+        this.reference = reference;
+    }
+
+    public Contrat(String nom_bien_contrat, String prix_bien_contrat, String nom_client_contrat, String nom_vendeur_contrat, String cin_vendeur_contrat, String cin_client_contrat, String agent_contrat, String date) {
+        this.nom_bien_contrat = nom_bien_contrat;
+        this.prix_bien_contrat = prix_bien_contrat;
+        this.nom_client_contrat = nom_client_contrat;
+        this.nom_vendeur_contrat = nom_vendeur_contrat;
+        this.cin_vendeur_contrat = cin_vendeur_contrat;
+        this.cin_client_contrat = cin_client_contrat;
+        this.agent_contrat = agent_contrat;
+        this.date = date;
     }
 
     public Contrat(int id_bien_contrat, String nom_bien_contrat, String prix_bien_contrat, String nom_client_contrat, String nom_vendeur_contrat, String cin_vendeur_contrat, String cin_client_contrat, String agent_contrat, String date) {
@@ -39,7 +63,7 @@ public class Contrat {
         this.date = date;
     }
 
-    public Contrat(String nom_bien_contrat, String prix_bien_contrat, String nom_client_contrat, String nom_vendeur_contrat, String cin_vendeur_contrat, String cin_client_contrat, String agent_contrat, String date) {
+    public Contrat(String nom_bien_contrat, String prix_bien_contrat, String nom_client_contrat, String nom_vendeur_contrat, String cin_vendeur_contrat, String cin_client_contrat, String agent_contrat, String date, String reference) {
         this.nom_bien_contrat = nom_bien_contrat;
         this.prix_bien_contrat = prix_bien_contrat;
         this.nom_client_contrat = nom_client_contrat;
@@ -48,6 +72,7 @@ public class Contrat {
         this.cin_client_contrat = cin_client_contrat;
         this.agent_contrat = agent_contrat;
         this.date = date;
+        this.reference = reference;
     }
 
     public int getId_bien_contrat() {
@@ -122,20 +147,27 @@ public class Contrat {
         this.date = date;
     }
 
-    public CheckBox getCheckBox(){
-        return checkBox;
+    public String getReference() {
+        return reference;
     }
-    public void setcheckBox(CheckBox checkBox){
-        this.checkBox = checkBox;
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     @Override
     public String toString() {
-        return "Contrat{" + "id_bien_contrat=" + id_bien_contrat + ", nom_bien_contrat=" + nom_bien_contrat + ", prix_bien_contrat=" + prix_bien_contrat + ", nom_client_contrat=" + nom_client_contrat + ", nom_vendeur_contrat=" + nom_vendeur_contrat + ", cin_vendeur_contrat=" + cin_vendeur_contrat + ", cin_client_contrat=" + cin_client_contrat + ", agent_contrat=" + agent_contrat + ", date=" + date + '}';
+        return "Contrat{" +
+                "id_bien_contrat=" + id_bien_contrat +
+                ", nom_bien_contrat='" + nom_bien_contrat + '\'' +
+                ", prix_bien_contrat='" + prix_bien_contrat + '\'' +
+                ", nom_client_contrat='" + nom_client_contrat + '\'' +
+                ", nom_vendeur_contrat='" + nom_vendeur_contrat + '\'' +
+                ", cin_vendeur_contrat='" + cin_vendeur_contrat + '\'' +
+                ", cin_client_contrat='" + cin_client_contrat + '\'' +
+                ", agent_contrat='" + agent_contrat + '\'' +
+                ", date='" + date + '\'' +
+                ", reference='" + reference + '\'' +
+                '}';
     }
-
-    
-    
-
-    
 }

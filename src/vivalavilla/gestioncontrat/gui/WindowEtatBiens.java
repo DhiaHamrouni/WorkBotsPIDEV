@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowAjouterContrat extends Application {
+public class WindowEtatBiens extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -17,7 +17,7 @@ public class WindowAjouterContrat extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("InterfaceContrat.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("EtatBiens.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Gestion des contrats");
             primaryStage.setScene(scene);
@@ -25,5 +25,6 @@ public class WindowAjouterContrat extends Application {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
