@@ -110,6 +110,14 @@ public class Authcntrl {
         }
 
     }
+    public void Iforgorpaswd(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/forgorpwd.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("");
+        stage.setScene(scene);
+        stage.show();
+    };
 
 
 }
