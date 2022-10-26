@@ -11,18 +11,27 @@ package vivalavilla.gestionetatbiens.entities;
  */
 public class EtatBiens {
     private int id; 
-    private String rating_bien; 
-    private int nombre_defaults; 
-    private String description_defaults; 
+    private int id_bien;
+    private String etat;
+    private int nombre_pannes;
+    private String description;
 
     public EtatBiens() {
     }
 
-    public EtatBiens(int id, String rating_bien, int nombre_defaults, String description_defaults) {
+    public EtatBiens(int id, int id_bien, String etat, int nombre_pannes, String description) {
         this.id = id;
-        this.rating_bien = rating_bien;
-        this.nombre_defaults = nombre_defaults;
-        this.description_defaults = description_defaults;
+        this.id_bien = id_bien;
+        this.etat = etat;
+        this.nombre_pannes = nombre_pannes;
+        this.description = description;
+    }
+
+    public EtatBiens(int id_bien, String etat, int nombre_pannes, String description) {
+        this.id_bien = id_bien;
+        this.etat = etat;
+        this.nombre_pannes = nombre_pannes;
+        this.description = description;
     }
 
     public int getId() {
@@ -33,34 +42,46 @@ public class EtatBiens {
         this.id = id;
     }
 
-    public String getRating_bien() {
-        return rating_bien;
+    public int getId_bien() {
+        return id_bien;
     }
 
-    public void setRating_bien(String rating_bien) {
-        this.rating_bien = rating_bien;
+    public void setId_bien(int id_bien) {
+        this.id_bien = id_bien;
     }
 
-    public int getNombre_defaults() {
-        return nombre_defaults;
+    public String getEtat() {
+        return etat;
     }
 
-    public void setNombre_defaults(int nombre_defaults) {
-        this.nombre_defaults = nombre_defaults;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
-    public String getDescription_defaults() {
-        return description_defaults;
+    public int getNombre_pannes() {
+        return nombre_pannes;
     }
 
-    public void setDescription_defaults(String description_defaults) {
-        this.description_defaults = description_defaults;
+    public void setNombre_pannes(int nombre_pannes) {
+        this.nombre_pannes = nombre_pannes;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return "EtatBiens{" + "id=" + id + ", rating_bien=" + rating_bien + ", nombre_defaults=" + nombre_defaults + ", description_defaults=" + description_defaults + '}';
+        return "EtatBiens{" +
+                "id=" + id +
+                ", id_bien=" + id_bien +
+                ", etat='" + etat + '\'' +
+                ", nombre_pannes=" + nombre_pannes +
+                ", description='" + description + '\'' +
+                '}';
     }
-    
-    
 }

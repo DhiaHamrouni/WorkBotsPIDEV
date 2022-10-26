@@ -5,10 +5,7 @@
  */
 package vivalavilla.gestionetatbiens.services;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +20,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import vivalavilla.gestionetatbiens.entities.EtatBiens;
 import vivalavilla.gestionetatbiens.utils.MyConnexion;
 
@@ -35,8 +35,8 @@ public class EtatbiensCRUD {
     public EtatbiensCRUD(){
         cnx2 = MyConnexion.getInstance().getCnx();
     }
-    public void ajouterEtatbiens1(){
-        String req="INSERT INTO `etat_biens`(`id`, `rating_bien`, `nombre_defaut`, `description_etat`) VALUES ('1','5stars','2','cuisine et salon')";
+    public void ajouterEtatbiens(){
+        String req="INSERT INTO `etat_biens`(`id_bien`, `etat`, `nombre_pannes`, `description`) VALUES ('1','5stars','2','cuisine et salon')";
         try {
             Statement st = cnx2.createStatement();
             st.executeUpdate(req);
@@ -49,21 +49,23 @@ public class EtatbiensCRUD {
     public void ajouterEtatbiens2(EtatBiens e){
         
         try {
-            String req2= "INSERT INTO `etat_biens` (`id`, "
-                + "`rating_bien`, `nombre_defaut`, `description_etat`) "
+            String req2= "INSERT INTO `etat_biens` (`id_bien`, "
+                + "`etat`, `nombre_pannes`, `description`) "
                 + "VALUES (?,?,?,?)";
             PreparedStatement pst = cnx2.prepareStatement(req2);
-            pst.setInt(1, e.getId());
-            pst.setString(2, e.getRating_bien());
-            pst.setInt(3, e.getNombre_defaults());
-            pst.setString(4, e.getDescription_defaults());
+            pst.setInt(1, e.getId_bien());
+            pst.setString(2, e.getEtat());
+            pst.setInt(3, e.getNombre_pannes());
+            pst.setString(4, e.getDescription());
             pst.executeUpdate();
             System.out.println("Votre etat est ajouté!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
-    public List<EtatBiens> afficherEtatbiens(){
+    public ObservableList<EtatBiens> afficherEtatbiens(){
+        ObservableList<EtatBiens> oblist2 = FXCollections.observableArrayList();
+
         List<EtatBiens> myList = new ArrayList<>();
         try {
             
@@ -74,11 +76,12 @@ public class EtatbiensCRUD {
             while(rs.next())
             {
                 EtatBiens e = new EtatBiens();
-                e.setId(rs.getInt(1));
-                e.setRating_bien(rs.getString(2));
-                e.setNombre_defaults(rs.getInt(3));
-                e.setDescription_defaults(rs.getString(4));
-                myList.add(e); 
+                e.setId_bien(rs.getInt(2));
+                e.setEtat(rs.getString(3));
+                e.setNombre_pannes(rs.getInt(4));
+                e.setDescription(rs.getString(5));
+                myList.add(e);
+                oblist2.add(e);
                 
             }
 
@@ -86,12 +89,12 @@ public class EtatbiensCRUD {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return myList;
+        return oblist2;
     }
     public void SupprimerEtatbiens(int id){
         
         try {
-            String req3= "DELETE FROM `etat_biens` WHERE id= ?";
+            String req3= "DELETE FROM `etat_biens` WHERE id_bien= ?";
             PreparedStatement pst = cnx2.prepareStatement(req3);
             pst.setInt(1, id);
             pst.executeUpdate();
@@ -103,13 +106,13 @@ public class EtatbiensCRUD {
     public void ModifierEtatbiens(EtatBiens e){
         
         try {
-            String req4= "UPDATE `etat_biens` SET `id`= ? ,`rating_bien`= ? ,`nombre_defaut`= ? ,`description_etat`= ? WHERE id = ?";
+            String req4= "UPDATE `etat_biens` SET `etat`= ? ,`nombre_pannes`= ? ,`description`= ? WHERE id_bien = ?";
             PreparedStatement pst = cnx2.prepareStatement(req4);
-            pst.setInt(1, e.getId());
-            pst.setString(2, e.getRating_bien());
-            pst.setInt(3, e.getNombre_defaults());
-            pst.setString(4,e.getDescription_defaults());           
-            pst.setInt(5, e.getId());
+            //pst.setInt(1, e.getId_bien());
+            pst.setString(1, e.getEtat());
+            pst.setInt(2, e.getNombre_pannes());
+            pst.setString(3,e.getDescription());
+            pst.setInt(4, e.getId_bien());
             pst.executeUpdate();
             System.out.println("Votre etat est modifie !!");
         } catch (SQLException ex) {
@@ -131,10 +134,10 @@ public class EtatbiensCRUD {
                 
                 if (rs.getInt(1) == e.getId())
                 {
-                    e2.setId(rs.getInt(1));
-                    e2.setRating_bien(rs.getString(2));
-                    e2.setNombre_defaults(rs.getInt(3));
-                    e2.setDescription_defaults(rs.getString(4));
+                    e2.setId_bien(rs.getInt(1));
+                    e2.setEtat(rs.getString(2));
+                    e2.setNombre_pannes(rs.getInt(3));
+                    e2.setDescription(rs.getString(4));
                     
                    
                     System.out.println("etat trouve !!");
