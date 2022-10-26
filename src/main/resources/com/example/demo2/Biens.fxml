@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #cadcf0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.BiensController">
+   <children>
+      <Label layoutX="462.0" layoutY="14.0" text="Gestion Des Biens" textFill="#0f1b82">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="retourB" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Retour" />
+      <Button fx:id="rechercherbien" layoutX="941.0" layoutY="100.0" mnemonicParsing="false" onAction="#recherchebien" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Rechercher" />
+      <Button fx:id="afficherbien" layoutX="27.0" layoutY="200.0" mnemonicParsing="false" onAction="#affichebien" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Actualiser" />
+      <Button fx:id="supprimerbien" layoutX="27.0" layoutY="320.0" mnemonicParsing="false" onAction="#supprimebien" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Supprimer" />
+      <Button fx:id="ajouterbien" layoutX="797.0" layoutY="662.0" mnemonicParsing="false" onAction="#ajoutbien" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Ajouter" />
+      <Button fx:id="modifierbien" layoutX="953.0" layoutY="662.0" mnemonicParsing="false" onAction="#modifbien" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="Modifier" />
+      <TextField fx:id="chercher" layoutX="579.0" layoutY="103.0" prefHeight="31.0" prefWidth="294.0" promptText="entrez type du bien à chercher" style="-fx-background-radius: 15;" />
+      <Label fx:id="type_bien" layoutX="45.0" layoutY="534.0" text="Type du bien">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="prix_dt" layoutX="46.0" layoutY="562.0" text="Prix ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="surface_total_metre" layoutX="45.0" layoutY="590.0" text="Surface Total">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" layoutX="42.0" layoutY="616.0" text="Description">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="images" layoutX="426.0" layoutY="534.0" text="Images">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nb_chambre" layoutX="426.0" layoutY="562.0" text="Nombre du chambre" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="hauteur_metre" layoutX="424.0" layoutY="562.0" text="hauteur" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="num_etage" layoutX="426.0" layoutY="590.0" text="Numéro d'étage" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nb_etoile" layoutX="426.0" layoutY="590.0" text="Nombre des étoile" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nb_piscine" layoutX="426.0" layoutY="616.0" text="Nombre des piscines" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="407.0" layoutY="529.0" orientation="VERTICAL" prefHeight="158.0" prefWidth="6.0" />
+      <Pane layoutX="824.0" layoutY="534.0" prefHeight="94.0" prefWidth="434.0" style="-fx-background-color: #0f1b82; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="67.0" layoutY="3.0" text="Informations de l'investeur:" textFill="WHITE">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="num_tel" layoutX="16.0" layoutY="24.0" text="numéro de telephone" textFill="#efefef">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="adresse_mail" layoutX="41.0" layoutY="50.0" text="Adresse mail" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="num_tel1" layoutX="208.0" layoutY="25.0" prefHeight="25.0" prefWidth="206.0" promptText="21225833" style="-fx-background-radius: 15;" />
+            <TextField fx:id="adresse_mail1" layoutX="208.0" layoutY="56.0" prefHeight="25.0" prefWidth="206.0" promptText="paul.michel@gmail.com" style="-fx-background-radius: 15;" />
+         </children>
+      </Pane>
+      <TextField fx:id="prix_dt1" layoutX="161.0" layoutY="563.0" prefHeight="26.0" prefWidth="234.0" promptText="entrez prix en dt" style="-fx-background-radius: 15;" />
+      <TextField fx:id="surface_total_metre1" layoutX="161.0" layoutY="595.0" prefHeight="26.0" prefWidth="234.0" promptText="donnez surface en mètre" style="-fx-background-radius: 15;" />
+      <TextField fx:id="hauteur_metre1" layoutX="604.0" layoutY="563.0" prefHeight="26.0" prefWidth="206.0" promptText="donnez hauteur en mètre" style="-fx-background-radius: 15;" visible="false" />
+      <TextField fx:id="nb_chambre1" layoutX="604.0" layoutY="563.0" prefHeight="26.0" prefWidth="206.0" promptText="entrez le nombre des chambre" style="-fx-background-radius: 15;" visible="false" />
+      <TextField fx:id="nb_etoile1" layoutX="604.0" layoutY="595.0" prefHeight="26.0" prefWidth="206.0" promptText="donnez le nombre des étoile de l'hotel" style="-fx-background-radius: 15;" visible="false" />
+      <TextField fx:id="num_etage1" layoutX="604.0" layoutY="595.0" prefHeight="26.0" prefWidth="206.0" promptText="entrez numéro d'etage" style="-fx-background-radius: 15;" visible="false" />
+      <TextField fx:id="nb_piscine1" layoutX="604.0" layoutY="624.0" prefHeight="26.0" prefWidth="206.0" promptText="entrez nombre des piscine dans un hotel" style="-fx-background-radius: 15;" visible="false" />
+      <TextField fx:id="yu" layoutX="161.0" layoutY="535.0" prefHeight="26.0" prefWidth="111.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="images1" layoutX="604.0" layoutY="535.0" prefHeight="26.0" prefWidth="206.0" promptText="url de l'image" style="-fx-background-radius: 15;" />
+      <TextArea fx:id="description1" layoutX="164.0" layoutY="626.0" prefHeight="72.0" prefWidth="234.0" promptText="description du bien" style="-fx-background-radius: 20;" />
+      <ChoiceBox fx:id="type_bien1" layoutX="259.0" layoutY="535.0" prefHeight="26.0" prefWidth="140.0" style="-fx-background-radius: 20;" />
+      <TableView fx:id="listBiens" layoutX="183.0" layoutY="154.0" prefHeight="371.0" prefWidth="1089.0">
+        <columns>
+          <TableColumn fx:id="id_bien_id" prefWidth="48.80000305175781" text="id_bien" />
+          <TableColumn fx:id="type_bien_id" prefWidth="65.5999755859375" text="type_bien" />
+            <TableColumn fx:id="prix_dt_id" prefWidth="72.800048828125" text="prix_dt" />
+            <TableColumn fx:id="surface_total_metre_id" prefWidth="63.199981689453125" text="surface_total_metre" />
+            <TableColumn fx:id="description_id" prefWidth="104.0" text="description" />
+            <TableColumn fx:id="images_id" prefWidth="149.5999755859375" text="images" />
+            <TableColumn fx:id="num_tel_id" minWidth="0.0" prefWidth="100.79998779296875" text="num_tel" />
+            <TableColumn fx:id="adresse_mail_id" prefWidth="119.199951171875" text="adresse_mail" />
+            <TableColumn fx:id="nb_chambre_id" prefWidth="75.99993896484375" text="nb_chambre" />
+            <TableColumn fx:id="num_etage_id" prefWidth="68.0" text="num_etage" />
+            <TableColumn fx:id="nb_etoile_id" prefWidth="75.0" text="nb_etoile" />
+            <TableColumn fx:id="nb_piscine_id" prefWidth="68.800048828125" text="nb_piscine" />
+            <TableColumn fx:id="hauteur_metre_id" prefWidth="72.0" text="hauteur_metre" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="158.0" fitWidth="159.0" layoutX="1140.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="27.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/retour.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="27.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/actualiser.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="27.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/supprimer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="941.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/rechercher.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="797.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/ajouter.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="recb" layoutX="1080.0" layoutY="662.0" mnemonicParsing="false" onAction="#recvalueb" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 20;" text="recuperer" />
+      <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="956.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/modifier.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

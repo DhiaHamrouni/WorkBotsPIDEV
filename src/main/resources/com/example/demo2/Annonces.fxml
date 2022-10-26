@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1042.0" style="-fx-background-color: #cadcf0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AnnoncesController">
+    <children>
+        <Label layoutX="327.0" layoutY="21.0" text="Gestion Des Annonces" textFill="#0f1b82" textOverrun="LEADING_ELLIPSIS">
+            <font>
+                <Font size="36.0" />
+            </font></Label>
+          <TextField fx:id="hela" layoutX="319.0" layoutY="107.0" opacity="0.7" prefHeight="35.0" prefWidth="310.0" promptText="entrez titre d'annonce à chercher" />
+          <Button fx:id="rechercherId" layoutX="684.0" layoutY="103.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="42.0" prefWidth="150.0" text="Rechercher" />
+          <Button fx:id="afficherannonce" layoutX="19.0" layoutY="188.0" mnemonicParsing="false" onAction="#afficheannonce" prefHeight="42.0" prefWidth="161.0" text="Actualiser" />
+          <Button fx:id="supprimerannonce" layoutX="18.0" layoutY="270.0" mnemonicParsing="false" onAction="#supprimeannonce" prefHeight="42.0" prefWidth="162.0" text="Supprimer" />
+      <ImageView fitHeight="194.0" fitWidth="177.0" layoutX="855.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="684.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/rechercher.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="listannonces" layoutX="208.0" layoutY="159.0" prefHeight="308.0" prefWidth="822.0">
+        <columns>
+          <TableColumn fx:id="A" prefWidth="115.20001220703125" text="id_bien" />
+          <TableColumn fx:id="titre_annonce_id" minWidth="0.0" prefWidth="181.60003662109375" text="titre de l'annonce" />
+            <TableColumn fx:id="affiche_annonce_id" prefWidth="352.7999267578125" text="affiche de l'annonce" />
+            <TableColumn fx:id="date_depot_id" prefWidth="171.20001220703125" text="date de depot" />
+        </columns>
+      </TableView>
+      <Button fx:id="retourA" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="161.0" text="Retour" />
+      <ImageView fitHeight="231.0" fitWidth="822.0" layoutX="208.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/hela4.jpeg" />
+         </image>
+      </ImageView>
+          <Label layoutX="236.0" layoutY="496.0" text="choisier bien:" textFill="WHITE" />
+          <TextField fx:id="titre1" layoutX="366.0" layoutY="542.0" prefHeight="26.0" prefWidth="278.0" promptText="choisissez un titre pour votre annonce" />
+          <Label fx:id="titre" layoutX="236.0" layoutY="547.0" text="titre de l'annonce" textFill="WHITE" />
+          <TextField fx:id="affiche1" layoutX="366.0" layoutY="600.0" prefHeight="26.0" prefWidth="277.0" promptText="choisissez une image pour l'affiche de votre annonce" />
+          <Label fx:id="datedepot" layoutX="233.0" layoutY="659.0" text="date de dépot" textFill="WHITE" />
+          <Label fx:id="affiche" layoutX="236.0" layoutY="603.0" text="Affiche de l'annonce" textFill="WHITE" />
+          <ComboBox fx:id="bienachoisir" layoutX="366.0" layoutY="491.0" prefHeight="26.0" prefWidth="278.0" promptText="choisissez un bien pour votre annonce" />
+          <TextField fx:id="h" layoutX="366.0" layoutY="655.0" prefHeight="25.0" prefWidth="118.0" />
+          <DatePicker fx:id="MyDatePicker" layoutX="484.0" layoutY="654.0" onAction="#getDate" prefHeight="26.0" prefWidth="161.0" promptText="date depot" />
+          <Button fx:id="ajouterannonce" layoutX="685.0" layoutY="547.0" mnemonicParsing="false" onAction="#ajoutannonce" prefHeight="42.0" prefWidth="169.0" text="Ajouter">
+                </Button>
+          <Button fx:id="modifierannonce" layoutX="684.0" layoutY="655.0" mnemonicParsing="false" onAction="#modifannonce" prefHeight="42.0" prefWidth="170.0" text="Modifier" />
+      <ImageView fitHeight="42.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/retour.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="53.0" layoutX="14.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/actualiser.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="54.0" layoutX="19.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/supprimer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="62.0" layoutX="691.0" layoutY="547.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/ajouter.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="1.0" layoutY="313.0" prefHeight="54.0" prefWidth="213.0" text="NB: selectionez l'annonce à supprimer" />
+      <ImageView fitHeight="245.0" fitWidth="224.0" layoutX="-3.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Man-is-handing-a-house-key-to-a-woman__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="rec" layoutX="684.0" layoutY="599.0" mnemonicParsing="false" onAction="#recvalue" prefHeight="42.0" prefWidth="170.0" text="recuperer" />
+      <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="684.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/modifier.png" />
+         </image>
+      </ImageView>
+    </children>
+
+</AnchorPane>
