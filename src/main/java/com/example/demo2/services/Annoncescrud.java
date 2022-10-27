@@ -1,6 +1,8 @@
 package com.example.demo2.services;
 
 import com.example.demo2.entities.Annonces;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,20 +76,21 @@ public class Annoncescrud {
 
 
 
-    public List<Annonces> afficherannonce() {
+    public ObservableList<Annonces> afficherannonce() {
         List<Annonces> myList = new ArrayList<>();
+        ObservableList<Annonces> oblist = FXCollections.observableArrayList();
         String requete3 = " SELECT * FROM annonces";
         try {
             Statement st = cnx2.createStatement();
             ResultSet rs = st.executeQuery(requete3);
             while (rs.next()) {
-                myList.add(new Annonces(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                oblist.add(new Annonces(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return myList;
+        return oblist;
     }
     public void supprimerannonce(Annonces A) {
         try {

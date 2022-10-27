@@ -263,12 +263,12 @@ public class BiensController implements Initializable {
             Bienscrud bc = new Bienscrud();
             bc.ajouterDU(B);
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("bien ajoutée!");
-        alert.showAndWait();
+
+
+
+
     }
+
 
     @FXML
     public void recvalueb() {

@@ -6,6 +6,8 @@ import com.example.demo2.services.Annoncescrud;
 import com.example.demo2.services.Bienscrud;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,7 +62,7 @@ public class AnnoncesController implements Initializable {
     @FXML
     Button rechercherId;
     @FXML
-    TextField hela;
+    private TextField hela;
     @FXML
     Button rec;
 
@@ -175,6 +177,26 @@ public class AnnoncesController implements Initializable {
         Annoncescrud ps = new Annoncescrud();
         ObservableList<Annonces> annonces = FXCollections.observableList(ps.afficherannonce());
         listannonces.setItems(annonces);
+        FilteredList<Annonces> filteredData = new FilteredList<>((ps.afficherannonce()), b -> true);
+        hela.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(contrat1 -> {
+                if (newValue.isEmpty() || newValue == null) {
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if (contrat1.getAffiche_annonce().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                } else if (contrat1.getTitre_annonce().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                } else if (contrat1.getDate_depot().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                }  else
+                    return false;
+            });
+        });
+        SortedList<Annonces> sortedList = new SortedList<>(filteredData);
+        sortedList.comparatorProperty().bind(listannonces.comparatorProperty());
+        listannonces.setItems(sortedList);
 
 
     }

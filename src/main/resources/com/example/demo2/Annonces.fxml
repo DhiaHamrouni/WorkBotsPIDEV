@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1042.0" style="-fx-background-color: #cadcf0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AnnoncesController">
+<AnchorPane prefHeight="720.0" prefWidth="1042.0" style="-fx-background-color: #cadcf0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AnnoncesController">
     <children>
         <Label layoutX="327.0" layoutY="21.0" text="Gestion Des Annonces" textFill="#0f1b82" textOverrun="LEADING_ELLIPSIS">
             <font>
@@ -94,3 +94,98 @@
     </children>
 
 </AnchorPane>
+        if ((v1.equals("31")) && ((v2.equals("Juin"))||(v2.equals("Septembre"))||(v2.equals("Novembre"))||(v2.equals("Avril")))||((v1.equals("30"))||(v1.equals("28"))||(v1.equals("29"))||(v1.equals("31"))) && (v2.equals("Février"))){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Date inexistant");
+        alert.showAndWait();
+        Jour.setValue(null);
+        Mois.setValue(null);
+        Année.setValue(null);
+        Région.setValue(null);
+        taclimat.setVisible(false);
+        }
+        /*if (((v1.equals("30"))||(v1.equals("28"))||(v1.equals("29"))||(v1.equals("31"))) && (v2.equals("Février"))){
+        taclimat.setVisible(false);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Date inexistant");
+        alert.showAndWait();
+        Jour.setValue(null);
+        Mois.setValue(null);
+        Année.setValue(null);
+        Région.setValue(null);
+        }*/
+
+        if (((v4.equals("Gasserine")) || (v4.equals("Sidi Bouzid")) || (v4.equals("Kairouen"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Mai")) || (v2.equals("Juin"))|| (v2.equals("Juillet"))|| (v2.equals("Aout"))|| (v2.equals("Septembre")))) {
+        taclimat.setText("Climat chaud tend vers trés chaud");
+        }
+        if (((v4.equals("Gasserine")) || (v4.equals("Sidi Bouzid")) || (v4.equals("Kairouen"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Avril")) || (v2.equals("Octobre"))|| (v2.equals("Novembre"))|| (v2.equals("Mars")))) {
+        taclimat.setText("Climat froid");
+        }
+
+        if (((v4.equals("Gasserine")) || (v4.equals("Sidi Bouzid")) || (v4.equals("Kairouen"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Décembre")) || (v2.equals("Janvier"))|| (v2.equals("Février")))) {
+        taclimat.setText("Climat très froid et précipitaion probable");
+        }
+
+        if (((v4.equals("Zaghouen")) || (v4.equals("Kef")) || (v4.equals("Siliana"))|| (v4.equals("Beja"))|| (v4.equals("Jandouba"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Mai")) || (v2.equals("Juin"))|| (v2.equals("Juillet"))|| (v2.equals("Aout"))|| (v2.equals("Septembre")))) {
+        taclimat.setText("Climat chaud tend vers trés chaud");
+        }
+
+        if (((v4.equals("Zaghouen")) || (v4.equals("Kef")) || (v4.equals("Siliana"))|| (v4.equals("Beja"))|| (v4.equals("Jandouba"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Avril")) || (v2.equals("Octobre"))|| (v2.equals("Novembre"))|| (v2.equals("Mars")))) {
+        taclimat.setText("Climat froid et précipitation probable");
+
+        }
+
+        if (((v4.equals("Zaghouen")) || (v4.equals("Kef")) || (v4.equals("Siliana"))|| (v4.equals("Beja"))|| (v4.equals("Jandouba"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Décembre")) || (v2.equals("Janvier"))|| (v2.equals("Février")))) {
+        taclimat.setText("Climat très froid et précipitation fort probable avec possibilité de la neige à Jandouba, Kef et Siliana");
+        }
+
+        if (((v4.equals("Sousse")) || (v4.equals("Monastir")) || (v4.equals("Mahdia"))|| (v4.equals("Sfax"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Mai")) || (v2.equals("Juin"))|| (v2.equals("Juillet"))|| (v2.equals("Aout"))|| (v2.equals("Septembre")))) {
+        taclimat.setText("Climat chaud tend vers trés chaud");
+        }
+
+
+        if (((v4.equals("Sousse")) || (v4.equals("Monastir")) || (v4.equals("Mahdia"))|| (v4.equals("Sfax"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Avril")) || (v2.equals("Octobre"))|| (v2.equals("Novembre"))|| (v2.equals("Mars")))) {
+        taclimat.setText("Climat modéré et précipitation peu probable");
+        }
+
+
+
+        if (((v4.equals("Sousse")) || (v4.equals("Monastir")) || (v4.equals("Mahdia"))|| (v4.equals("Sfax"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Décembre")) || (v2.equals("Janvier"))|| (v2.equals("Février")))) {
+        taclimat.setText("Climat très froid et précipitation fort probable");
+        }
+
+
+        if (((v4.equals("Grand Tunis")) || (v4.equals("Bizerte")) || (v4.equals("Nabeul"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Mai")) || (v2.equals("Juin"))|| (v2.equals("Juillet"))|| (v2.equals("Aout"))|| (v2.equals("Septembre")))) {
+        taclimat.setText("Climat chaud tend vers trés chaud");
+        }
+
+
+        if (((v4.equals("Grand Tunis")) || (v4.equals("Bizerte")) || (v4.equals("Nabeul"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Mars")) || (v2.equals("Avril"))|| (v2.equals("Octobre")))) {
+        taclimat.setText("Le climat froid et précipitation propable ");
+        }
+
+
+        if (((v4.equals("Grand Tunis")) || (v4.equals("Bizerte")) || (v4.equals("Nabeul"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Novembre")) || (v2.equals("Decembre"))|| (v2.equals("Janvier")))) {
+        taclimat.setText("Le climat très froid et précipitation fort propable ");
+        }
+
+
+
+
+        if (((v4.equals("Gafsa")) || (v4.equals("Gabes")) || (v4.equals("Mednine")) || (v4.equals("Kebili")) || (v4.equals("Tozeur"))|| (v4.equals("Tataouin"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Avril")) || (v2.equals("Mai")) || (v2.equals("Juin"))|| (v2.equals("Juillet"))|| (v2.equals("Aout"))|| (v2.equals("Septembre")))) {
+        taclimat.setText("Climat chaud tend vers trés chaud");
+        }
+
+
+        if (((v4.equals("Gafsa")) || (v4.equals("Gabes")) || (v4.equals("Mednine")) || (v4.equals("Kebili")) || (v4.equals("Tozeur"))|| (v4.equals("Tataouin"))) && ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Décembre")) || (v2.equals("Janvier")))) {
+        taclimat.setText("Climat très froid");
+        }
+
+        if (((v4.equals("Gafsa")) || (v4.equals("Gabes")) || (v4.equals("Mednine")) || (v4.equals("Kebili")) || (v4.equals("Tozeur"))|| (v4.equals("Tataouin")))&& ((v3.equals("2022")) || (v3.equals("2023"))) && ((v2.equals("Octobre")) || (v2.equals("Novembre"))|| (v2.equals("Mars"))|| (v2.equals("Février")))){
+        taclimat.setText("Climat modéré");
+        }
+
