@@ -30,18 +30,17 @@
             <Font size="19.0" />
          </font>
       </TextField>
+      <TextField fx:id="tfprenom" layoutX="617.0" layoutY="234.0" prefHeight="42.0" prefWidth="260.0" promptText="username" style="-fx-background-radius: 20;">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
       <Button fx:id="confirm1" layoutX="568.0" layoutY="404.0" mnemonicParsing="false" onAction="#cofirm1" prefHeight="54.0" prefWidth="139.0" style="-fx-background-radius: 30; -fx-background-color: #244357;" text="Confirmer" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
       <Button layoutX="566.0" layoutY="560.0" mnemonicParsing="false" onAction="#backtoauth" prefHeight="54.0" prefWidth="139.0" style="-fx-background-radius: 30; -fx-background-color: #244357;" text="Annuler" textFill="WHITE">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
-      <TextField fx:id="tfcode" layoutX="617.0" layoutY="234.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="260.0" promptText="Code" style="-fx-background-radius: 20;" visible="false" />
-      <Button fx:id="confirm2" layoutX="568.0" layoutY="404.0" mnemonicParsing="false" onAction="#cofirm2" prefHeight="54.0" prefWidth="139.0" style="-fx-background-radius: 30; -fx-background-color: #244357;" text="Confirmer" textFill="WHITE" visible="false">
          <font>
             <Font size="23.0" />
          </font>
@@ -56,10 +55,5 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="tfprenom" layoutX="617.0" layoutY="234.0" prefHeight="42.0" prefWidth="260.0" promptText="username" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

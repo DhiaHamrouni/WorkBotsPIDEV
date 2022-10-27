@@ -28,6 +28,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import static services.AgentCRUD.*;
 import static services.ClientCRUD.AfficherClientCondition;
@@ -153,6 +154,18 @@ public class Adminctrl implements Initializable{
     Button supration2;
     @FXML
     Button supration11;
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -209,7 +222,12 @@ public class Adminctrl implements Initializable{
         a.setMdp(adminmdp.getText());
         a.setNumTel(adminnumtel.getText());
         a.setDateNaissance(String.valueOf(adminddn.getValue()));
-        result.setText(ajouterAgent(a));
+        if (isValid(adminemail.getText())) {
+            result.setText(ajouterAgent(a));
+        }
+        else {
+            result.setText("Email n est pas saisie correctement");
+        }
         showagents();
     }
     public void clearfields(){

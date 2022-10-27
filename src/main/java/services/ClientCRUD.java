@@ -11,7 +11,7 @@ import java.util.List;
 public class ClientCRUD {
     public static String ajouterClient(Client cl){
         try {
-            String req2= "INSERT INTO `clients` (`CIN`, `Nom`, `Prenom`, `email`, `mot_de_passe`, `num_tel`,`sexe`,`date_naissance`,`adresse`) "+
+            String req2= "INSERT INTO `client` (`CIN`, `Nom`, `Prenom`, `email`, `mot_de_passse`, `num_tel`,`sexe`,`date_naissance`,`adresse`) "+
                     "VALUES (?, ?, ?, ?, ?, ?,?,?,?)";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             pst.setString(1, cl.getCIN());
@@ -39,7 +39,7 @@ public class ClientCRUD {
     }
     public static String ModifClient(Client cl,String email){
         try {
-            String req2= "UPDATE `clients` SET CIN=?, Nom=?, Prenom=?, email=?, num_tel=? , adresse=? WHERE email='"+email+"'";
+            String req2= "UPDATE `client` SET CIN=?, Nom=?, Prenom=?, email=?, num_tel=? , adresse=? WHERE email='"+email+"'";
             String req3="UPDATE `users` SET email=? where email='"+email+"'";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
@@ -59,7 +59,7 @@ public class ClientCRUD {
     }
     public static String SupprClient(String email){
         try {
-            String req2= "DELETE FROM `clients` WHERE email = ?";
+            String req2= "DELETE FROM `client` WHERE email = ?";
             String req3="DELETE FROM `users` WHERE email = ?";
             PreparedStatement pst = new MyConnexion().getCnx().prepareStatement(req2);
             PreparedStatement pst1 = new MyConnexion().getCnx().prepareStatement(req3);
@@ -105,7 +105,7 @@ public class ClientCRUD {
         Client cl = null;
         try {
 
-            String req3 = "SELECT `CIN`, `Nom`, `Prenom`, `email`, `num_tel`, `date_naissance`,`adresse` FROM `clients`WHERE id=" + Id;
+            String req3 = "SELECT `CIN`, `Nom`, `Prenom`, `email`, `num_tel`, `date_naissance`,`adresse` FROM `client`WHERE id=" + Id;
             Statement st;
             Connection cnx = MyConnexion.getInstance().getCnx();
             st = cnx.createStatement();
@@ -135,7 +135,7 @@ public class ClientCRUD {
         Client cl = null;
         try {
 
-            String req3 = "SELECT `CIN`, `Nom`, `Prenom`, `email`, `num_tel`, `adresse` FROM `clients` WHERE email='"+email+"'";
+            String req3 = "SELECT `CIN`, `Nom`, `Prenom`, `email`, `num_tel`, `adresse` FROM `client` WHERE email='"+email+"'";
             Statement st;
             Connection cnx = MyConnexion.getInstance().getCnx();
             st = cnx.createStatement();

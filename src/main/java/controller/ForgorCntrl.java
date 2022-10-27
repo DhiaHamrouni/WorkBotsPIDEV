@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import services.EmailSender;
 import utils.MyConnexion;
 import utils.sendEmailSMTP;
 
@@ -30,15 +31,15 @@ public class ForgorCntrl {
 @FXML
     Button confirm1;
 @FXML
-    TextField tfcode;
-@FXML
-    Button confirm2;
-@FXML
     Label dmgcontrol;
 @FXML
     TextField tfprenom;
 @FXML
     Label lab1;
+static String savedToken;
+static String savedEmail;
+EmailSender send=new EmailSender();
+
     private String Token;
 
     public String setToken(String Token) {
@@ -69,45 +70,23 @@ public class ForgorCntrl {
         return pat.matcher(email).matches();
     }
 
-public void cofirm1(){
+public void cofirm1(ActionEvent event) throws MessagingException,IOException {
     if((tfemail.getText()).isEmpty()){
         dmgcontrol.setText("REMPLIR LE CHAMP D'ABORD SVP");
     }
     else {
     if (isValid(tfemail.getText())){
         String token =tokenGenerator();
-        new Thread( ()->{
-            try {
-                sendEmailSMTP.changePasswordEmail(tfprenom.getText(), tfemail.getText(), token);
-            } catch (MessagingException ex) {
-                Logger.getLogger(ForgorCntrl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }).start();
-        lab.setVisible(false);
-        lab1.setText("Entrer le code recu en mail");
-        tfprenom.setVisible(false);
-        tfemail.setVisible(false);
-        tfcode.setVisible(true);
-
-
-
-    }
-    }
-}
-public void cofirm2(ActionEvent event) throws IOException {
-    if(setToken(Token).equals(tfcode.getText())){
+        savedToken=token;
+        savedEmail=tfemail.getText();
+        send.sendEmailWithAttachments(tfemail.getText(),"password reset","Welcome, You have asked for a password reset. Please user this code in the reset password window:"+ token,token);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/workbotspidev/pwdreset.fxml"));
-        String email= tfemail.getText();
-        Pwdreset scene2Controller = fxmlLoader.getController();
-        scene2Controller.getemail(email);
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("");
         stage.setScene(scene);
         stage.show();
     }
-    else {
-        dmgcontrol.setText("LE TOKEN EST INCORRECT");
     }
 }
 public void backtoauth(ActionEvent event) throws IOException{
